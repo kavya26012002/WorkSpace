@@ -1,0 +1,26 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "244a1aca-b385-468a-9337-286c36f47e1a": {
+      "ProjectGuid": "244a1aca-b385-468a-9337-286c36f47e1a",
+      "DisplayName": "WorkSpaceAPI",
+      "ColorIndex": 0
+    },
+    "db7fe1ca-8225-4422-9e21-9fe10a89e986": {
+      "ProjectGuid": "db7fe1ca-8225-4422-9e21-9fe10a89e986",
+      "DisplayName": "WorkSpaceAPIEntites",
+      "ColorIndex": 1
+    },
+    "51face5d-01a3-4392-80d8-73849cfedd17": {
+      "ProjectGuid": "51face5d-01a3-4392-80d8-73849cfedd17",
+      "DisplayName": "WorkSpaceAPIRepository",
+      "ColorIndex": 2
+    },
+    "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3": {
+      "ProjectGuid": "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3",
+      "DisplayName": "Miscellaneous Files",
+      "ColorIndex": -1
+    }
+  },
+  "NextColorIndex": 3
+}

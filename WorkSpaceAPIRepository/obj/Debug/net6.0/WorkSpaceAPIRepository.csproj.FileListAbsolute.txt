@@ -1,0 +1,15 @@
+C:\Users\pci60\Desktop\NEW PROJECT\WorkSpaceAPI\WorkSpaceAPIRepository\bin\Debug\net6.0\WorkSpaceAPIRepository.deps.json
+C:\Users\pci60\Desktop\NEW PROJECT\WorkSpaceAPI\WorkSpaceAPIRepository\bin\Debug\net6.0\WorkSpaceAPIRepository.dll
+C:\Users\pci60\Desktop\NEW PROJECT\WorkSpaceAPI\WorkSpaceAPIRepository\bin\Debug\net6.0\ref\WorkSpaceAPIRepository.dll
+C:\Users\pci60\Desktop\NEW PROJECT\WorkSpaceAPI\WorkSpaceAPIRepository\bin\Debug\net6.0\WorkSpaceAPIRepository.pdb
+C:\Users\pci60\Desktop\NEW PROJECT\WorkSpaceAPI\WorkSpaceAPIRepository\bin\Debug\net6.0\WorkSpaceAPIEntites.dll
+C:\Users\pci60\Desktop\NEW PROJECT\WorkSpaceAPI\WorkSpaceAPIRepository\bin\Debug\net6.0\WorkSpaceAPIEntites.pdb
+C:\Users\pci60\Desktop\NEW PROJECT\WorkSpaceAPI\WorkSpaceAPIRepository\obj\Debug\net6.0\WorkSpaceAPIRepository.csproj.AssemblyReference.cache
+C:\Users\pci60\Desktop\NEW PROJECT\WorkSpaceAPI\WorkSpaceAPIRepository\obj\Debug\net6.0\WorkSpaceAPIRepository.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\pci60\Desktop\NEW PROJECT\WorkSpaceAPI\WorkSpaceAPIRepository\obj\Debug\net6.0\WorkSpaceAPIRepository.AssemblyInfoInputs.cache
+C:\Users\pci60\Desktop\NEW PROJECT\WorkSpaceAPI\WorkSpaceAPIRepository\obj\Debug\net6.0\WorkSpaceAPIRepository.AssemblyInfo.cs
+C:\Users\pci60\Desktop\NEW PROJECT\WorkSpaceAPI\WorkSpaceAPIRepository\obj\Debug\net6.0\WorkSpaceAPIRepository.csproj.CoreCompileInputs.cache
+C:\Users\pci60\Desktop\NEW PROJECT\WorkSpaceAPI\WorkSpaceAPIRepository\obj\Debug\net6.0\WorkSpaceAPIRepository.csproj.CopyComplete
+C:\Users\pci60\Desktop\NEW PROJECT\WorkSpaceAPI\WorkSpaceAPIRepository\obj\Debug\net6.0\WorkSpaceAPIRepository.dll
+C:\Users\pci60\Desktop\NEW PROJECT\WorkSpaceAPI\WorkSpaceAPIRepository\obj\Debug\net6.0\ref\WorkSpaceAPIRepository.dll
+C:\Users\pci60\Desktop\NEW PROJECT\WorkSpaceAPI\WorkSpaceAPIRepository\obj\Debug\net6.0\WorkSpaceAPIRepository.pdb

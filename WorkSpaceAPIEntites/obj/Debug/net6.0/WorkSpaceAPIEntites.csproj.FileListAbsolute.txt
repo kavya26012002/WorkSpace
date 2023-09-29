@@ -1,0 +1,12 @@
+C:\Users\pci60\Desktop\NEW PROJECT\WorkSpaceAPI\WorkSpaceAPIEntites\bin\Debug\net6.0\WorkSpaceAPIEntites.deps.json
+C:\Users\pci60\Desktop\NEW PROJECT\WorkSpaceAPI\WorkSpaceAPIEntites\bin\Debug\net6.0\WorkSpaceAPIEntites.dll
+C:\Users\pci60\Desktop\NEW PROJECT\WorkSpaceAPI\WorkSpaceAPIEntites\bin\Debug\net6.0\ref\WorkSpaceAPIEntites.dll
+C:\Users\pci60\Desktop\NEW PROJECT\WorkSpaceAPI\WorkSpaceAPIEntites\bin\Debug\net6.0\WorkSpaceAPIEntites.pdb
+C:\Users\pci60\Desktop\NEW PROJECT\WorkSpaceAPI\WorkSpaceAPIEntites\obj\Debug\net6.0\WorkSpaceAPIEntites.csproj.AssemblyReference.cache
+C:\Users\pci60\Desktop\NEW PROJECT\WorkSpaceAPI\WorkSpaceAPIEntites\obj\Debug\net6.0\WorkSpaceAPIEntites.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\pci60\Desktop\NEW PROJECT\WorkSpaceAPI\WorkSpaceAPIEntites\obj\Debug\net6.0\WorkSpaceAPIEntites.AssemblyInfoInputs.cache
+C:\Users\pci60\Desktop\NEW PROJECT\WorkSpaceAPI\WorkSpaceAPIEntites\obj\Debug\net6.0\WorkSpaceAPIEntites.AssemblyInfo.cs
+C:\Users\pci60\Desktop\NEW PROJECT\WorkSpaceAPI\WorkSpaceAPIEntites\obj\Debug\net6.0\WorkSpaceAPIEntites.csproj.CoreCompileInputs.cache
+C:\Users\pci60\Desktop\NEW PROJECT\WorkSpaceAPI\WorkSpaceAPIEntites\obj\Debug\net6.0\WorkSpaceAPIEntites.dll
+C:\Users\pci60\Desktop\NEW PROJECT\WorkSpaceAPI\WorkSpaceAPIEntites\obj\Debug\net6.0\ref\WorkSpaceAPIEntites.dll
+C:\Users\pci60\Desktop\NEW PROJECT\WorkSpaceAPI\WorkSpaceAPIEntites\obj\Debug\net6.0\WorkSpaceAPIEntites.pdb
