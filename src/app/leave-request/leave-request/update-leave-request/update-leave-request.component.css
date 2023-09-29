@@ -1,0 +1,180 @@
+.main_div_add_request {
+    width: 83vw;
+    height: 600px;
+    overflow-y: scroll;
+  }
+  
+  .addrequestcontent {
+    margin-top: 15px;
+    width: 67%;
+    display: flex;
+    justify-content: center;
+    background-color:white;
+  }
+  
+  .mat_dialog_content {
+    width: 87%;
+  }
+  
+  .flex-container {
+    display: flex;
+    align-items: center; 
+    flex-wrap: wrap;
+  }
+  .red-button {
+    background-color: red; 
+    color: white; 
+  }
+  
+  .content_title {
+    padding: 0 0 15px 0;
+    font-size: 15px;
+    font-weight: normal;
+    color: #333;
+    margin: 0;
+    font-family: "Segoe UI", 'SegoeUINormal', arial;
+  }
+  
+  .label-container {
+    
+    min-width: 200px;
+    display: flex;
+    align-items: center;
+  }
+  
+  .content {
+    width: 100%;
+   
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        flex: 1;   
+    
+  }
+  
+  .full-width {
+    width: 100%;
+  }
+  .WorkDonecontent
+{ display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    flex: 1;
+
+
+}
+.dropdownclass
+{
+width: 100%;
+}
+.footer
+{
+    padding: 15px;
+    text-align: right;
+    border-top: 1px solid #e5e5e5;
+}
+.save-btn
+{
+    background: #208fc8;
+    border: 1px solid #208fc8;
+    color: rgb(255, 255, 255);
+    cursor: pointer;
+    font-size: 14px;
+    font-family: "Segoe UI", arial, tahoma;
+    font-weight: 400;
+    border-radius: 0%;
+}
+.close-btn
+{
+    background-color: #e1e1e1;
+    border-color: #e1e1e1;
+    color: #494949 !important;
+    border-radius: 0%;
+    cursor: pointer;
+    font-size: 14px;
+    font-family: "Segoe UI", arial, tahoma;
+    font-weight: 400;
+    margin-left: 5px;
+}
+.ic18 {
+  background-position: -18px -144px !important;
+}
+
+
+.breadcrums_display
+{
+  font-size: 13px;
+  padding-top: 11px;
+  display: flex;
+}
+.WorkSpace_breadcrum
+{
+ font-size: 13px;
+ color: rgb(51,51,51);
+ font-family: "Segoe UI",arial,tahoma;
+ font-weight: 400; 
+ font-style: normal;
+ white-space: nowrap;
+ text-align: left;
+}
+.breadcrum_content {
+  display: flex; 
+  align-items: center; 
+}
+
+.WorkSpace_breadcrum {
+  margin-right: 5px; 
+}
+
+.breadcrumb-separator {
+  padding: 0 5px;
+      font-size: 17px;
+}
+.link_breadcrum {
+  color: #999999;
+  text-decoration: none;
+  font-size: 13px;
+  font-family: "Segoe UI",arial,tahoma;
+  font-weight: 400; 
+  font-style: normal;
+  white-space: nowrap;
+  text-align: left;
+  cursor: pointer;
+
+
+}
+
+.navic {
+  background: url(src\assets\ic-leftnav.png) 0px 0px no-repeat;
+  width: 18px;
+  height: 18px;
+  display: inline-block;
+  margin-right: 6px;
+  vertical-align: -4px;
+}
+@media screen and (max-width: 900px)
+{
+    .addrequestcontent {
+        width: 81%;
+        display: flex;
+        justify-content: center;
+        
+      }
+}
+@media screen and (max-width: 765px)
+{
+    .addrequestcontent {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+       
+        margin-top: 11px;
+    }
+}
+
+  
+  
+  
+  
+  
+  

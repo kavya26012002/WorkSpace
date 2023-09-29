@@ -1,0 +1,19 @@
+
+  <div>
+    <div class="modal-header container-fluid">
+  <h1 mat-dialog-title class="modal-title">Confirmation</h1>
+  <button
+        [mat-dialog-close]="false"
+        mat-icon-button
+        style="float: right; margin-right: 5px"
+      >
+        <mat-icon>cancel</mat-icon>
+      </button>
+</div>
+  <div mat-dialog-content>{{ data.message }}</div>
+  <mat-divider class="full-width"></mat-divider>
+  <div mat-dialog-actions class="modal-footer">
+    <button mat-raised-button color="primary" [mat-dialog-close]="false" class="yes-btn" (click)="closeDialog(true)">Yes</button>
+    <button mat-raised-button color="warn" [mat-dialog-close]="true" class="no-btn" (click)="closeDialog(false)">No</button>
+  </div>
+</div>

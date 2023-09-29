@@ -1,0 +1,390 @@
+.main-top-header {
+    background: #208fc8 !important;
+    /* box-shadow: 5px 0px 10px rgb(0 0 0 / 50%); */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 70px;
+    padding: 0 20px;
+}
+
+.header-side-toggle {
+    width: max-content;
+    background: #208fc8 !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.menu-icon {
+    font-size: 35px;
+    width: 40px;
+    height: 40px;
+}
+
+.notification-header {
+    width: 3vw;
+    height: 100%;
+    background: #208fc8 !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.notifiaction-icon {
+    font-size: 40px;
+}
+
+.workspace-left-side {
+    width: 55vw;
+    background: #208fc8 !important;
+}
+
+.dropdown-select-project {
+    width: 29vw;
+    background: #208fc8 !important;
+}
+
+.header-employee-name {
+    color: white;
+    position: relative;
+
+
+
+    font-family: "Segoe UI", Arial,tahoma;
+    position: relative;
+    font-size: 16px !important;
+    font-weight: 400;
+    cursor: pointer;
+    box-sizing: border-box;
+    font-stretch: 100%;
+}
+
+.header-project-name {
+    font-family: "Segoe UI", Arial,tahoma;
+    position: relative;
+    color: #FFF !important;
+    font-size: 16px !important;
+    font-weight: 400;
+    cursor: pointer;
+    box-sizing: border-box;
+    font-stretch: 100%;
+}
+.project-dropdown-icon
+{
+    font-size: 30px;
+    opacity: 0.7;
+}
+.logo-comapny {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+}
+
+.dropdown-select-project {
+    width: 29vw;
+    background: #208fc8 !important;
+    position: relative;
+    padding: 0 10px;
+}
+
+.dropdown-select-project::before {
+    content: '';
+    position: absolute;
+    top: 7%;
+    transform: translateY(-51%);
+    left: 0;
+    width: 1px;
+    height: 276%;
+    background-color: white;
+    opacity: 0.5;
+}
+
+.dropdown-select-project::after {
+    content: '';
+    position: absolute;
+    top: 7%;
+    transform: translateY(-50%);
+    right: 0;
+    width: 1px;
+    height: 276%;
+    background-color: white;
+    opacity: 0.5;
+}
+
+.dropdown-select-profile {
+    width: max-content;
+    background: #208fc8 !important;
+    padding: 0 10px;
+    position: relative;
+}
+
+.dropdown-select-profile::before {
+    content: '';
+    position: absolute;
+    top: 7%;
+    transform: translateY(-51%);
+    left: 0;
+    width: 1px;
+    height: 276%;
+    background-color: white;
+    opacity: 0.5;
+}
+
+.valign-centre-project {
+    width: 23vw;
+    display: flex;
+    flex-direction: row;
+    margin-top: 13px;
+    align-items: center;
+    align-content: center;
+    justify-content: space-between;
+}
+
+.valign-centre-profile {
+    width: max-content;
+    display: flex;
+    flex-direction: row;
+    margin-top: 13px;
+    align-items: center;
+    align-content: center;
+    justify-content: space-around;
+}
+
+.mat-toolbar,
+.mat-toolbar h1,
+.mat-toolbar h2,
+.mat-toolbar h3,
+.mat-toolbar h4,
+.mat-toolbar h5,
+.mat-toolbar h6 {
+    font-size: 20px;
+    font-weight: 500;
+    font-family: Roboto, sans-serif;
+    letter-spacing: .0125em;
+    margin: 0;
+}
+
+.responsive-dropdown {
+    display: none;
+}
+
+/* MediaQuerues */
+@media screen and (max-width: 1569px) {
+    .valign-centre-project {
+        width: 16vw;
+        display: flex;
+        flex-direction: row;
+        margin-top: 13px;
+        align-items: center;
+        align-content: center;
+        justify-content: space-between;
+    }
+    .dropdown-select-profile {
+        width:max-content;
+        background: #208fc8 !important;
+        position: relative;
+    }
+}
+@media screen and (max-width: 1196px) {
+    .valign-centre-project {
+        width: 13vw;
+        display: flex;
+        flex-direction: row;
+        margin-top: 13px;
+        align-items: center;
+        align-content: center;
+        justify-content: space-between;
+    }
+    .dropdown-select-profile {
+        width:max-content;
+        background: #208fc8 !important;
+        position: relative;
+    }
+    .dropdown-select-project {
+        width: 22vw;
+        background: #208fc8 !important;
+    }
+}
+@media screen and (max-width: 1102px) {
+    .dropdown-select-project {
+        width: 18vw;
+        background: #208fc8 !important;
+    }
+    .valign-centre-project {
+        width: 10vw;
+        display: flex;
+        flex-direction: row;
+        margin-top: 13px;
+        align-items: center;
+        align-content: center;
+        justify-content: space-between;
+    }
+    .dropdown-select-profile {
+        width:max-content;
+        background: #208fc8 !important;
+        position: relative;
+    }
+}
+@media screen and (max-width: 1046px) {
+    .header-employee-name {
+        display: none;
+    }
+
+    .notifiaction-icon {
+        font-size: 32px;
+    }
+    .valign-centre-project {
+        width: 7vw;
+        display: flex;
+        flex-direction: row;
+        margin-top: 13px;
+        align-items: center;
+        align-content: center;
+        justify-content: space-between;
+    }
+}
+
+@media screen and (max-width: 832px) {
+    .workspace-left-side {
+        width: 45vw;
+        background: #208fc8 !important;
+    }
+
+    .notifiaction-icon {
+        font-size: 25px;
+    }
+
+    .dropdown-select-project {
+        width: 23vw;
+        background: #208fc8 !important;
+        position: relative;
+        padding: 0 10px;
+    }.valign-centre-project {
+        width: 10vw;
+        display: flex;
+        flex-direction: row;
+        margin-top: 13px;
+        align-items: center;
+        align-content: center;
+        justify-content: space-between;
+    }
+}
+
+@media screen and (max-width: 670px) {
+    .dropdown-resposive-select-project {
+        width: 100vw;
+        position: relative;
+        padding: 0 10px;
+    }
+
+    .responsive-dropdown {
+        display: block;
+    }
+    .project-responsive-dropdown
+     {
+        font-size: 30px;
+        opacity: 0.77;
+    }
+     .valign-centre-responsive-project {
+        width: 87vw;
+        display: flex;
+        justify-content: space-between;
+    } 
+.header-resposive-project-name
+{ 
+    font-family: "Segoe UI", Arial,tahoma;
+    position: relative;
+    color:black !important;
+    font-size: 16px !important;
+    font-weight: 400;
+    cursor: pointer;
+    box-sizing: border-box;
+    font-stretch: 100%;
+
+}
+    .dropdown-select-project {
+        display: none;
+    }
+    
+
+   
+
+    .notifiaction-icon {
+        font-size: 35px;
+    }
+
+    .workspace-left-side {
+        width: 60vw;
+        background: #208fc8 !important;
+    }
+
+    .notification-header::before {
+        content: '';
+        position: absolute;
+        top: 7%;
+        transform: translateY(-51%);
+        left: 0;
+        width: 1px;
+        height: 205%;
+        background-color: white;
+        opacity: 0.5;
+    }
+
+    .notification-header {
+        width: 5vw;
+        height: 100%;
+        background: #208fc8 !important;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+    }
+
+}
+
+@media screen and (max-width: 536px) {
+    .notifiaction-icon {
+        font-size: 37px;
+    }
+
+    .notification-header {
+        width: 15vw;
+        height: 100%;
+        background: #208fc8 !important;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+
+
+    }
+
+    .workspace-left-side {
+        width: 40vw;
+        background: #208fc8 !important;
+    }
+
+    .header-side-toggle {
+        width: max-content;
+        background: #208fc8 !important;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+    }
+
+    .menu-icon {
+        font-size: 28px;
+        width: 28px;
+        height: 28px;
+
+
+    }
+
+    .worskspace-logo {
+        width: 117px;
+    }
+
+}

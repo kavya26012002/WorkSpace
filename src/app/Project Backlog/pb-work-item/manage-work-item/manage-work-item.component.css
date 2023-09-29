@@ -1,0 +1,260 @@
+
+.breadcrums_display
+{
+  font-size: 13px;
+  padding-top: 11px;
+  display: flex;
+}
+.ic18
+{
+    background-position: -18px -144px !important;
+}
+.WorkSpace_breadcrum
+{
+ font-size: 13px;
+ color: rgb(51,51,51);
+ font-family: "Segoe UI",arial,tahoma;
+ font-weight: 400; 
+ font-style: normal;
+ white-space: nowrap;
+ text-align: left;
+}
+.breadcrum_content
+{
+  display: flex; 
+  align-items: center; 
+}
+
+.WorkSpace_breadcrum
+{
+  margin-right: 5px; 
+}
+
+.breadcrumb-separator
+{
+  padding: 0 5px;
+  font-size: 17px;
+}
+.link_breadcrum
+{
+  color: #999999;
+  text-decoration: none;
+  font-size: 13px;
+  font-family: "Segoe UI",arial,tahoma;
+  font-weight: 400; 
+  font-style: normal;
+  white-space: nowrap;
+  text-align: left;
+  cursor: pointer;
+}
+
+.navic 
+{
+  background: url(src\assets\ic-leftnav.png) 0px 0px no-repeat;
+  width: 18px;
+  height: 18px;
+  display: inline-block;
+  margin-right: 6px;
+  vertical-align: -4px;
+}
+.form_field_one
+{
+    color: rgb(51,51,51);
+    display: flex;
+    font-size: 14px;
+    width: 100%;
+    margin-top: 20px;
+}
+.flex-container
+{
+    display: flex;
+    width: 100%;
+    margin: 0%;
+}
+.label-container
+{
+    float: right;
+    font-family: "Segoe UI", arial, tahoma;
+    font-weight: 400;
+    line-height: 18.5714px;
+    font-size: 14px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    min-height: 1px;
+    padding-bottom: 4px;
+    padding-left: 55px;
+    padding-right: 0px;
+    padding-top: 17px;
+    min-width: 200px;
+   
+}
+.main_content
+{
+    width: 100%;
+   
+}
+.full-width
+{
+    width: 100%;
+}
+.flex-container_two
+{
+    width:100%;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.label-container-left
+{
+    display: flex;
+    width: 45%;
+}
+.label-container-right
+{
+    display: flex;
+    width: 45%;
+}
+.label_container_leftside_left
+{
+    float: right;
+    font-family: "Segoe UI", arial, tahoma;
+    font-weight: 400;
+    line-height: 18.5714px;
+    font-size: 14px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    min-height: 1px;
+    padding-bottom: 4px;
+    padding-left: 55px;
+    padding-right: 0px;
+    padding-top: 17px;
+    min-width: 200px;
+}
+.label_container_rightside_left
+{
+    float: right;
+    font-family: "Segoe UI", arial, tahoma;
+    font-weight: 400;
+    line-height: 18.5714px;
+    font-size: 14px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    min-height: 1px;
+    padding-bottom: 4px;
+    padding-left: 46px;
+    padding-right: 0px;
+    padding-top: 17px;
+    min-width: 200px;
+}
+.label_container_rightside_right
+{
+    float: right;
+    font-family: "Segoe UI", arial, tahoma;
+    font-weight: 400;
+    line-height: 18.5714px;
+    font-size: 14px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    min-height: 1px;
+    padding-bottom: 4px;
+    padding-left: 55px;
+    padding-right: 0px;
+    /* padding-top: 17px; */
+   min-width: 200px;
+}
+.label_container_leftside_right
+{
+    width: 100%;
+}
+.label_container_rightside_right
+{
+    width: 100%;
+    padding: 0px;
+}
+label.content_title,.content_title_two {
+    min-width: 90%;
+  
+    text-align: right;
+}
+.date-picker
+{
+    width: 100%;
+   
+}
+.icon-with-line {
+    position: relative;
+}
+.main_manageworkItem_div 
+{
+
+        height: 650px;
+        overflow-y: scroll;
+        overflow-x: auto;
+}
+.last_div
+{
+    display: flex;
+    justify-content: space-between;
+}
+.rsi{
+    display: flex;
+}
+.label_container_rsi_left
+{
+min-width: 100px;
+}
+.content_title_rsi {
+    min-width: 90%;
+    padding-top: 20px;
+    text-align: right;
+}
+.footer
+{
+    padding: 15px;
+    text-align: right;
+  
+}
+.save-btn
+{
+    background: #208fc8;
+    border: 1px solid #208fc8;
+    color: rgb(255, 255, 255);
+    cursor: pointer;
+    font-size: 14px;
+    font-family: "Segoe UI", arial, tahoma;
+    font-weight: 400;
+    border-radius: 0%;
+}
+.close-btn
+{
+    background-color: #e1e1e1;
+    border-color: #e1e1e1;
+    color: #494949 !important;
+    border-radius: 0%;
+    cursor: pointer;
+    font-size: 14px;
+    font-family: "Segoe UI", arial, tahoma;
+    font-weight: 400;
+    margin-left: 5px;
+}
+
+@media screen and (max-width: 1200px) {
+    .label-container-left
+{
+    display: flex;
+    width: 100%;
+}
+.label-container-right
+{
+    display: flex;
+    width: 100%;
+}
+@media screen and (max-width: 763px) {
+    .main_content
+    {
+        padding-bottom: 100px;
+    }
+}
+}
+
+

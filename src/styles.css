@@ -1,0 +1,257 @@
+/* You can add global styles to this file, and also import other style files */
+
+html,
+body {
+  height: 100%;
+  overflow-y: hidden;
+}
+.mat-h2, .mat-headline-6, .mat-typography .mat-h2, .mat-typography .mat-headline-6, .mat-typography h2 {
+  font-size: 20px;
+  font-weight: 500;
+ 
+  font-family: Roboto, sans-serif;
+  letter-spacing: .0125em;
+  
+}
+.mat-mdc-dialog-content {
+  max-height: 400px;
+}
+@keyframes slideFromTop {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+.slide-from-top {
+  animation: slideFromTop 0.3s ease-out;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  overflow-y: hidden;
+}
+.mat-drawer-inner-container {
+  width: 100%;
+  height: 100%;
+
+  overflow-y: hidden !important;
+  overflow-x: hidden !important;
+}
+.mdc-menu-surface {
+  display: none;
+  position: absolute;
+  box-sizing: border-box;
+  max-width: var(--mdc-menu-max-width, calc(100vw - 32px));
+  max-height: var(--mdc-menu-max-height, calc(100vh - 32px));
+  margin: 0;
+  padding: 0;
+  transform: scale(1);
+  transform-origin: top left;
+  opacity: 0;
+  overflow: auto;
+  will-change: transform, opacity;
+  z-index: 8;
+  border-radius: var(--mdc-shape-medium, 4px);
+}
+.display_whole_content {
+  background-color: white;
+  width: 83vw;
+  height: 84vh;
+}
+.breadcrums_display {
+  height: 4vh;
+}
+.display_header {
+  width: 83vw;
+  height: 6vh;
+  background-color: white;
+  border-bottom: 4px solid #208fc8;
+  padding-top: 13px;
+  color: black;
+  font-family: "Segoe UI", "SegoeUINormal", arial;
+  font-size: 22px;
+  color: #333;
+  line-height: 1;
+}
+.cdk-overlay-connected-position-bounding-box {
+  top: 270.338px;
+  left: 534.438px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  height: 98px !important;
+}
+.mat-mdc-menu-content.mdc-list.ng-tns-c23-5 {
+  height: 93px !important ;
+}
+
+@media (max-width: 767px) {
+  .mat-drawer {
+    position: relative !important;
+  }
+  .mat-drawer-content.main-content {
+    margin-left: 0 !important;
+  }
+}
+@media (max-width: 1257px) {
+  .display_whole_content {
+    background-color: white;
+    width: 71vw !important;
+    height: 74vh;
+  }
+  .mat-mdc-menu-content.mdc-list.ng-tns-c23-5 {
+    height: 38px !important;
+}
+
+  .display_header {
+    width: 71vw;
+    height: 6vh;
+    background-color: white;
+    border-bottom: 4px solid #208fc8;
+    padding-top: 13px;
+    color: black;
+    font-family: "Segoe UI", "SegoeUINormal", arial;
+    font-size: 22px;
+    color: #333;
+    line-height: 1;
+  }
+}
+@media (max-width: 787px) {
+  .display_whole_content {
+    background-color: white;
+    width: 61vw !important;
+    height: 83vh;
+  }
+  .display_header {
+    width: 61vw;
+    height: 6vh;
+    background-color: white;
+    border-bottom: 4px solid #208fc8;
+    padding-top: 13px;
+    color: black;
+    font-family: "Segoe UI", "SegoeUINormal", arial;
+    font-size: 22px;
+    color: #333;
+    line-height: 1;
+  }
+}
+@media (max-width: 765px) {
+  .display_whole_content {
+    background-color: white;
+    width: 92vw !important;
+    height: 83vh;
+  }
+  .display_header {
+    width: 91vw;
+    height: 6vh;
+    background-color: white;
+    border-bottom: 4px solid #208fc8;
+    padding-top: 13px;
+    color: black;
+    font-family: "Segoe UI", "SegoeUINormal", arial;
+    font-size: 22px;
+    color: #333;
+    line-height: 1;
+  }
+}
+table{
+    width: 100% !important;
+}
+mat-datepicker-content {
+  height: fit-content;
+}
+
+.mat-mdc-tooltip-trigger
+{
+  background-color: white !important;
+  color: black !important;
+}
+
+
+.table {
+  display: flex;
+  flex-direction: column;
+  line-height: normal;
+
+  /* width: 100%; */
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width:180px!important;
+  background-color: white;
+  margin: 0;
+  line-height: normal;
+  /* padding: 3px; */
+  border: 1px solid #dddddd;
+}
+.label-with-line {
+  flex: 1;
+  border-right: 1px solid #dddddd;
+  line-height: normal;
+
+
+  /* padding: 3px; */
+}
+.column {
+  flex: 1;
+  line-height: normal;
+
+  /* padding: 3px; */
+  font-size: 13px;
+  border-right: 1px solid #dddddd;
+
+  text-align: center; 
+  /* Optional: To center-align text in columns */
+}
+.column:last-child {
+  border-right: none; /* Remove right border from the last column */
+}
+
+
+
+
+
+.label-heading {
+font-size: 13px;
+min-width: 40px;
+padding: 0px !important;
+margin: 0px !important;
+}
+
+
+
+/* .row > div:not(:last-child) {
+  border-right: 1px solid#dddddd;
+}  */
+
+.tooltip
+{
+  padding: 0 !important;
+  margin: 0 !important;
+  width: 180px !important;
+}
+.ck-editor__editable_inline {
+  min-height: 200px;
+}
+
+.mat-mdc-tab .mdc-tab__text-label, .mat-mdc-tab-link .mdc-tab__text-label {
+color: #428bca !important;
+font-size: 13px;
+font-family: "Segoe UI",arial,tahoma;
+font-weight: 400;
+line-height: 18.5714px;
+text-decoration-style: solid;
+text-size-adjust: 100%;
+}
+.mat-mdc-tab:not(.mat-mdc-tab-disabled).mdc-tab--active .mdc-tab__text-label, .mat-mdc-tab-link:not(.mat-mdc-tab-disabled).mdc-tab--active .mdc-tab__text-label {
+  color: rgb(51,51,51) !important;
+}
+.mat-mdc-tab:not(.mat-mdc-tab-disabled) .mdc-tab-indicator__content--underline, .mat-mdc-tab-link:not(.mat-mdc-tab-disabled) .mdc-tab-indicator__content--underline {
+  border-color: var(--mdc-tab-indicator-active-indicator-color, rgb(51,51,51)) !important;
+}

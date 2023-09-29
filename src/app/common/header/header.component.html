@@ -1,0 +1,76 @@
+<div>
+    <mat-toolbar class="main-top-header" color="primary">
+        <div class="left-side-part d-flex">
+            <div class="header-side-toggle">
+                <button (click)="toggleSidebar()" mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+                    <mat-icon class="menu-icon">menu</mat-icon>
+                </button>
+            </div>
+            <div class="workspace-left-side">
+                <img class="worskspace-logo" src="/assets/workspace-logo.png" />
+            </div>
+        </div>
+        <div class="dropdown-select-project">
+            <button mat-button [matMenuTriggerFor]="selectProject" #projectMenuTrigger="matMenuTrigger">
+                <div class="valign-centre-project">
+                    <div class="name-project">
+                        <span class="header-project-name">{{ selectedProject || 'Select Project' }}</span>
+                    </div>
+                    <div class="project-dropdown">
+                        <mat-icon class="material-icons project-dropdown-icon">keyboard_arrow_down</mat-icon>
+                    </div>
+                </div>
+            </button>
+            <mat-menu #selectProject="matMenu" (closed)="onProjectMenuClosed()">
+                <button mat-menu-item *ngFor="let project of projects" (click)="selectProjectValue(project.projectName)">{{ project.projectName }}</button>
+                <!-- <button mat-menu-item (click)="selectProjectValue('Miscallenous')">Miscallenous</button> -->
+            </mat-menu>
+        </div>
+
+
+        <div class="notification-header">
+            <i class="material-icons notifiaction-icon">notifications</i>
+        </div>
+
+
+      
+
+        <div class="dropdown-select-profile">
+            <button mat-button [matMenuTriggerFor]="selectProfile">
+                <div class="valign-centre-profile">
+                    <img class="logo-comapny" src="/assets/userImg.png" />
+                    <!-- <span class="header-employee-name">Kavya Deliwala</span> -->
+                    <span class="header-employee-name"> {{employeeName}}</span>
+                    <mat-icon class="material-icons">keyboard_arrow_down</mat-icon>
+                </div>
+            </button>
+            <mat-menu #selectProfile="matMenu">
+                <button mat-menu-item (click)="onMenuItemClick('LogOut')">LogOut</button>
+                <button mat-menu-item>Two</button>
+            </mat-menu>
+        </div>
+    </mat-toolbar>
+    <p class="responsive-dropdown">
+        <mat-toolbar>
+            <div class="dropdown-resposive-select-project">
+                <button mat-button [matMenuTriggerFor]="selectProject" #projectMenuTrigger="matMenuTrigger">
+                    <div class="valign-centre-responsive-project">
+                        <span class="header-resposive-project-name">{{ selectedProject || 'Select Project' }} </span>
+                        <div class="project-responsive-dropdown">
+                        <mat-icon class="material-icons ">keyboard_arrow_down</mat-icon>
+                        </div>
+                        <!-- <i class="material-icons">arrow_drop_down</i> -->
+                    </div>
+                </button>
+                <mat-menu #selectProject="matMenu" (closed)="onProjectMenuClosed()">
+                    <button mat-menu-item *ngFor="let project of projects" (click)="selectProjectValue(project.projectName)">{{ project.projectName }}</button>
+                    <!-- <button mat-menu-item (click)="selectProjectValue('Miscallenous')">Miscallenous</button> -->
+                </mat-menu>
+            </div>
+        </mat-toolbar>
+
+    </p>
+
+    
+</div>
+<p>

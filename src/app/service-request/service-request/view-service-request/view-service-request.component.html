@@ -1,0 +1,209 @@
+<div class="display_whole_content">
+  <div class="breadcrums_display">
+    <i class="navic ic18"></i>
+ <div class="breadcrum_content">
+   <span class="WorkSpace_breadcrum">My WorkSpace</span>
+   <span class="breadcrumb-separator">&gt;</span>
+   <a class="link_breadcrum">Service Requests</a>
+</div>
+</div>   
+  <div class="heading_table">
+      <div class="display_header">
+        {{ selectedItemName ? selectedItemName : "My ServiceRequest" }}
+        <div class="add_btn">
+          <mat-icon class="add_btn_icon" (click)="openAddServiceModal()">add</mat-icon>
+        </div>
+      </div>
+  
+      <div *ngIf="showServiceRequestSuccess" class="success-message">
+          <app-error-message [showSuccess]="showServiceRequestSuccess" [successMessage]="serviceRequestSuccessMessage">helooo</app-error-message>
+      </div>
+      <div class="table1">
+        <div class="searching">
+          <div class="content_searching">
+            <div class="content_searching1">
+              <div class="filter_heading">
+                <span class="filter_name">Request Status</span>
+              </div>
+              
+                <div class="filter_dropdown">
+                   
+                    <button
+                      class="filter_dropdownclass"
+                      mat-button
+                      [matMenuTriggerFor]="selectStatus"
+                      #projectMenuTrigger="matMenuTrigger"
+                    >
+                      <div class="main_valign-centre">
+                        <div class="valign-centre-project">
+                          <div class="name-project">
+                            <span class="header-project-name">{{ selectedServiceRequestStatus | enumValue }}</span>
+
+                          </div>
+                          <div class="project-dropdown">
+                            <mat-icon class="">keyboard_arrow_down</mat-icon>
+                          </div>
+                        </div>
+                      </div>
+                    </button>
+                    <mat-menu #selectStatus="matMenu">
+                        <button
+                          mat-menu-item
+                          *ngFor="let status of ServiceRequestOptions"
+                          (click)="selectServiceRequestStatusValue(status.value)"
+                        >
+                          {{ status.name }}
+                        </button>
+                      </mat-menu>
+                
+              </div>
+            </div>
+            <form [formGroup]="ticketvalueForm">
+            <div class="content_searching2">
+              <div class="filter_heading">
+                <span class="filter_name">Ticket #</span>
+              </div>
+              <div class="filter_dropdown">
+                <div class="main_content3">
+                <mat-form-field appearance="outline"  class="custom-width">
+                    
+                    <input #ticketInput matInput [value]="ticketNumber"
+                    [formControlName]="'ticket'"  placeholder="Enter Ticket No"/>
+                    
+                  </mat-form-field>
+                </div>
+              </div>
+            </div>
+        </form>
+            
+          </div>
+        </div>
+        
+        <div class="serch_clearbtn">
+          <div class="buttons">
+            <div class="example-button-row">
+              <button
+              class="btn-color search-btn"
+              mat-fab
+              extended
+              color="primary"
+              (click)="OnSearchServiceRequestFilter()"
+              
+              
+              >
+              <mat-icon>search</mat-icon>
+              Search
+            </button>
+            <div class="example-button-row">
+              <button
+              class="btn-color clear-btn"
+              mat-fab
+              extended
+              color="primary"
+             (click)="OnClearServiceRequestFilter()"
+              >
+              <mat-icon>loop</mat-icon>
+              Clear
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+      <div class="maintable">
+        <table class="kendo-table">
+          <thead>
+            <tr>
+              <th
+                *ngFor="let column of Columns"
+                [style.width.px]="column.width"
+                [style.backgroundColor]="'whitesmoke'"
+                (click)="sortTable(column.sortable ? column : null)"
+                [class.sortable-header]="column.sortable">
+                  {{ column.title }}
+                  <mat-icon *ngIf="sortColumn === column.sortColumn" class="sort-icon">
+                    {{ sortOrder ? 'arrow_drop_up' : 'arrow_drop_down' }}
+                  </mat-icon>
+              </th>
+            
+            </tr>
+          </thead>
+          <tbody *ngIf="totalRecords > 0; else noRecords">
+            
+              <tr *ngFor="let row of gridData">
+                  <td *ngFor="let column of Columns">
+                    <ng-container *ngIf="column.field === 'requestDate'">
+                        {{ row[column.field] | date: 'yyyy-MM-dd' }}
+                      </ng-container>
+                      <ng-container *ngIf="column.field === 'pendingAt'">
+                        {{ row[column.field] ? (row[column.field] | date: 'yyyy-MM-dd') : '--' }}
+                      </ng-container>
+                      <ng-container *ngIf="column.field==='closedAt'">
+                        {{ row[column.field] ? (row[column.field] | date: 'yyyy-MM-dd') : '--' }}
+                      </ng-container>
+                      <ng-container *ngIf="column.field === 'closedBy'">
+                        {{ row[column.field] ? row[column.field] : '--' }}
+                      </ng-container>
+                      
+                   
+                    <ng-container *ngIf="column.field === 'action'">
+                      <div class="editanddelete">
+                      <mat-icon (click)="UpdateServiceRequest(row.ticket,row.status)">schedule</mat-icon>
+                     </div>
+                    </ng-container>
+                    <ng-container *ngIf="column.field !== 'requestDate' && column.field !== 'pendingAt' && column.field !== 'closedAt' && column.field !== 'closedBy'">
+                        {{ row[column.field] }}
+                      </ng-container>
+                   
+                  </td>
+                </tr>
+                
+               
+          </tbody>
+          <ng-template #noRecords>
+            <tbody>
+              <tr>
+                <td [attr.colspan]="Columns.length">
+                  No Records Found
+                </td>
+              </tr>
+            </tbody>
+          </ng-template>
+         
+  
+        </table>
+        <mat-paginator #paginator
+        [length]="totalRecords"
+        [pageSizeOptions]="pageSizeOptions"
+        (page)="onPageChange($event)"
+        arial-label="select page"
+        *ngIf="totalRecords > 0">
+      
+        
+        <ng-template matPaginatorIntl let-paginator>
+          <div class="paginator">
+            <div class="total-records">{{ paginator.length }} Total Records</div>
+            <div class="paginator-controls">
+              <button (click)="paginator.previousPage()" mat-icon-button>
+                <mat-icon>keyboard_arrow_left</mat-icon> Previous
+              </button>
+              <div class="page-size">
+                <mat-select [(value)]="pageSize" (selectionChange)="onPageSizeChange($event)">
+                  <mat-option *ngFor="let option of pageSizeOptions" [value]="option">{{ option }}</mat-option>
+                </mat-select>
+              </div>
+              <button (click)="paginator.nextPage()" mat-icon-button>
+                 <mat-icon>keyboard_arrow_right</mat-icon>
+                
+              </button>
+            </div>
+          </div>
+        </ng-template>
+      
+      </mat-paginator>
+      
+      </div>
+    </div>
+  </div>
+  

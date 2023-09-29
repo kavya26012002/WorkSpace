@@ -1,0 +1,55 @@
+
+
+
+ .modal-header
+ {
+     display: flex;
+     border-bottom: 4px solid #208fc8;
+    
+     color: black;
+     font-family: "Segoe UI", arial, tahoma;
+     font-size: 13px;
+     color: #333;
+     min-height: 16.428571429px;
+     
+     min-height: 16.428571429px;
+     padding: 15px;
+     font-weight: 400;
+ }
+ .modal-title{
+    
+     padding: 0 0 5px 0;
+     font-size: 24px;
+     font-weight: normal;
+     color: #333;
+     margin: 0;
+     font-family: "Segoe UI",'SegoeUINormal', arial;
+ }
+ .full-width
+ {
+    width: 100%;
+ }
+ .modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    padding: 15px;
+    text-align: right;
+    border-top: 1px solid #e5e5e5;
+}
+.yes-btn
+{
+    background-color: #1080b9 !important;
+    border: 1px solid #1080b9;
+    border-radius: 0%;
+    font-size: 14px;
+    font-family: 'Segoe UI', arial, tahoma;
+    
+}
+.no-btn
+{
+    background-color: #e1e1e1;
+    border-color: #e1e1e1;
+    color: #494949 !important;
+    border-radius: 0%;
+
+}

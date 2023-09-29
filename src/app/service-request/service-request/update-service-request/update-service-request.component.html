@@ -1,0 +1,386 @@
+<div class="display_whole_content">
+  <div class="breadcrums_display">
+    <i class="navic ic18"></i>
+ <div class="breadcrum_content">
+   <span class="WorkSpace_breadcrum">My WorkSpace</span>
+   <span class="breadcrumb-separator">&gt;</span>
+   <a class="link_breadcrum" routerLink="/service-request/view-serviceRequest">Service Requests</a>
+</div>
+</div>   <div class="heading_table">
+    <div class="display_header">
+      {{ selectedItemName ? selectedItemName : "ServiceRequest" }}
+    </div>
+  </div>
+  <div *ngIf="showServiceRequestError">
+    <app-error-message
+      [showError]="showServiceRequestError"
+      [errorMessage]="serviceRequestErrorMessage"
+    ></app-error-message>
+    </div>
+    <div *ngIf="showServiceRequestSuccess">
+    <app-error-message
+      [showSuccess]="showServiceRequestSuccess"
+      [successMessage]="serviceRequestSuccessMessage"
+    ></app-error-message>
+  </div>
+  <div class="update_service_request">
+    <div class="flex-container">
+      
+      <div class="left-column">
+        <div class="column-header">Request Details</div>
+       
+        <form [formGroup]="updateServiceRequest">
+          <div class="form_field_one">
+            <div class="flex-container-content">
+              <div class="label-container">
+                <label class="content_title">Ticket No:</label>
+              </div>
+              <div class="content">
+                <mat-form-field appearance="fill" class="full-width">
+                  <input
+                    matInput
+                    placeholder=""
+                    readonly
+                    [formControlName]="'ticket'"
+                  />
+                </mat-form-field>
+              </div>
+            </div>
+          </div>
+          <div class="form_field_one">
+            <div class="flex-container-content">
+              <div class="label-container">
+                <label class="content_title">Requested Date:</label>
+              </div>
+              <div class="content">
+                <mat-form-field appearance="fill" class="full-width">
+                  <input
+                    matInput
+                    placeholder=""
+                    readonly
+                    [formControlName]="'requestDate'"
+                  />
+                </mat-form-field>
+              </div>
+            </div>
+          </div>
+          <div class="form_field_one">
+            <div class="flex-container-content">
+              <div class="label-container">
+                <label class="content_title">Requested Name:</label>
+              </div>
+              <div class="content">
+                <mat-form-field appearance="fill" class="full-width">
+                  <input
+                    matInput
+                    placeholder=""
+                    readonly
+                    [formControlName]="'name'"
+                  />
+                </mat-form-field>
+              </div>
+            </div>
+          </div>
+          <div class="form_field_one">
+            <div class="flex-container-content">
+              <div class="label-container">
+                <label class="content_title">Status:</label>
+              </div>
+              <div class="content">
+                <mat-form-field appearance="fill" class="full-width">
+                    <input
+                      matInput
+                      placeholder=""
+                      readonly
+                      [formControlName]="'status'"
+                    
+                    />
+                  </mat-form-field>
+              
+              </div>
+            </div>
+          </div>
+          <div class="form_field_one">
+            <div class="flex-container-content">
+              <div class="label-container">
+                <label class="content_title">Service Group:</label>
+              </div>
+              <div class="content">
+                <mat-form-field appearance="fill" class="full-width" readonly  *ngIf="serviceRequestStatus !== '2'">
+                  
+                    <input
+                      matInput
+                      placeholder=""
+                      readonly
+                      [formControlName]="'serviceGroup'"
+                    
+                    />
+                </mat-form-field>
+                <mat-form-field appearance="outline" class="full-width"  *ngIf="serviceRequestStatus == '2'">
+                  
+                    <mat-select
+                      [formControlName]="'serviceGroupId'"
+                      (selectionChange)="onServiceGroupSelectioChange($event)"
+                    
+                    >
+                      <mat-option value="Select">Select</mat-option>
+                      <mat-option
+                        *ngFor="let option of ServiceGroupOPtions"
+                        [value]="option.value"
+                      >
+                        {{ option.name }}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+              </div>
+            </div>
+          </div>
+          <div class="form_field_one">
+            <div class="flex-container-content">
+              <div class="label-container">
+                <label class="content_title">Category:</label>
+              </div>
+              <div class="content">
+                <mat-form-field appearance="fill" class="full-width" readonly  *ngIf="serviceRequestStatus !== '2'">
+                  
+                    <input
+                      matInput
+                      placeholder=""
+                      readonly
+                      [formControlName]="'category'"
+                    
+                    />
+                </mat-form-field>
+                <mat-form-field appearance="outline" class="full-width" *ngIf="serviceRequestStatus == '2'">
+                  <mat-select
+                    [formControlName]="'categoryId'"
+                    (selectionChange)="onCategoryGroupSelectionChange($event)"
+                  >
+                    <mat-option value="Select">Select</mat-option>
+                    <mat-option
+                      *ngFor="let category of categoryOptions"
+                      [value]="category.categoryId"
+                    >
+                      {{ category.categoryName }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+            </div>
+          </div>
+          <div class="form_field_one">
+            <div class="flex-container-content">
+              <div class="label-container">
+                <label class="content_title">Sub Category:</label>
+              </div>
+              <div class="content">
+                <mat-form-field appearance="fill" class="full-width" readonly  *ngIf="serviceRequestStatus !== '2'">
+                  
+                    <input
+                      matInput
+                      placeholder=""
+                      readonly
+                      [formControlName]="'subCategory'"
+                    
+                    />
+                </mat-form-field>
+                <mat-form-field appearance="outline" class="full-width" *ngIf="serviceRequestStatus == '2'">
+                  <mat-select [formControlName]="'subCategoryId'">
+                    <mat-option value="Select">Select</mat-option>
+                    <mat-option
+                      *ngFor="let subcategory of subCategoryOptions"
+                      [value]="subcategory.subCategoryId"
+                    >
+                      {{ subcategory.subCategoryName }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+            </div>
+          </div>
+          <div class="form_field_one">
+            <div class="flex-container-content">
+              <div class="label-container">
+                <label class="content_title">Priority:</label>
+              </div>
+              <div class="content">
+                <mat-form-field appearance="fill" class="full-width" readonly  *ngIf="serviceRequestStatus !== '2'">
+                  
+                    <input
+                      matInput
+                      placeholder=""
+                      readonly
+                      [formControlName]="'priority'"
+                    
+                    />
+                </mat-form-field>
+                <mat-form-field appearance="outline" class="full-width" *ngIf="serviceRequestStatus == '2'">
+                  <mat-select [formControlName]="'priority'">
+                    <mat-option
+                      *ngFor="let option of priorityOptions"
+                      [value]="option"
+                    >
+                      {{ option }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+            </div>
+          </div>
+          <div class="form_field_one">
+            <div class="flex-container-content">
+              <div class="label-container">
+                <label class="content_title">Service Details:</label>
+              </div>
+              <div class="content">
+                <mat-form-field appearance="fill" class="full-width" readonly  *ngIf="serviceRequestStatus !== '2'">
+                  
+                    <input
+                      matInput
+                      placeholder=""
+                      readonly
+                      [formControlName]="'serviceDetails'"
+                    
+                    />
+                </mat-form-field>
+                <mat-form-field appearance="fill" class="full-width" *ngIf="serviceRequestStatus == '2'">
+                  <textarea
+                    matInput
+                    [formControlName]="'serviceDetails'"
+                  ></textarea>
+                </mat-form-field>
+              </div>
+            </div>
+          </div>
+          <div class="left_column_2">
+            <div class="column-header">Action Required</div>
+            <div class="form_field_one">
+              <div class="flex-container-content">
+                <div class="label-container">
+                  <label class="content_title">Extra Comment:</label>
+                </div>
+                <div class="content">
+                  <mat-form-field appearance="fill" class="full-width">
+                    <textarea
+                      matInput
+                      [formControlName]="'extraComments'"
+                    ></textarea>
+                  </mat-form-field>
+                </div>
+              </div>
+            </div>
+          </div>
+          <mat-divider class="divider"></mat-divider>
+
+          <div class="footer">
+            <button
+              *ngIf="serviceRequestStatus !== '2' && serviceRequestStatus !== '8'"
+              class="save-btn"
+              type="submit"
+              mat-raised-button
+              color="primary"
+              (click)="ChangeServiceRequestStatus()"
+            >
+              <mat-icon>restore</mat-icon>
+              Reopen
+            </button>
+            <button
+              class="save-btn"
+              type="submit"
+              mat-raised-button
+              color="primary"
+              *ngIf="serviceRequestStatus === '2' && serviceRequestStatus !== '8' "
+              (click)="UpdateServiceRequest()"
+            >
+              <mat-icon>print</mat-icon>
+              Update
+            </button>
+            <button
+              class="close-btn"
+              mat-raised-button
+              color="primary"
+              [mat-dialog-close]="true"
+              (click)="CancelUpdateServiceRequest()"
+            >
+              <mat-icon>cancel</mat-icon>Close
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <div class="right-column">
+        <div class="column-header">Request Details History</div>
+        <div class="maintable">
+          <table class="kendo-table">
+            <thead>
+              <tr>
+                <th
+                  *ngFor="let column of Columns"
+                  [style.width.px]="column.width"
+                  [style.backgroundColor]="'whitesmoke'"
+                >
+                  {{ column.title }}
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let row of gridData">
+                <td *ngFor="let column of Columns">
+                  <ng-container *ngIf="column.field === 'closedBy'">
+                    {{ row[column.field] ? row[column.field] : "--" }}
+                  </ng-container>
+                  <ng-container *ngIf="column.field === 'comments'">
+                    {{ row[column.field] ? row[column.field] : "--" }}
+                  </ng-container>
+                  <ng-container *ngIf="column.field === 'attachments'">
+                    {{ row[column.field] ? row[column.field] : "--" }}
+                  </ng-container>
+                  <ng-container *ngIf="column.field === 'closedAt'">
+                    {{
+                      row[column.field]
+                        ? (row[column.field] | date : "yyyy-MM-dd")
+                        : "--"
+                    }}
+                  </ng-container>
+                  <ng-container
+                    *ngIf="
+                      column.field !== 'closedBy' &&
+                      column.field !== 'comments' &&
+                      column.field !== 'attachments' &&
+                      column.field !== 'closedAt'
+                    "
+                  >
+                    {{ row[column.field] }}
+                  </ng-container>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="left_column_2">
+          <div class="column-header">Request Response Time Summary</div>
+          <div class="maintable">
+            <table class="kendo-table">
+              <thead>
+                <tr>
+                  <th
+                    *ngFor="let column of bottomtable"
+                    [style.width.px]="column.width"
+                    [style.backgroundColor]="'whitesmoke'"
+                  >
+                    {{ column.title }}
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td [attr.colspan]="Columns.length">No Records Found</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

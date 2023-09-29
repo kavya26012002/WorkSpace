@@ -1,0 +1,443 @@
+.middle-section
+{
+    margin-top:10px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+   
+}
+.timesheet_main
+{
+    height: 700px;
+    overflow: auto;
+}
+.flex-between{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.FullLeaveBox {
+    background-color: #DAEBBA;
+    border: 1px solid #00612E;
+    color: #00612E;
+    padding: 0 0 2px 2px;
+}
+.ColorBox {
+    display: inline-block;
+    height: 15px;
+    width: 15px;
+}
+a {
+    color: #333;
+    display: inline-block;
+    font-size: 13px;
+    font-weight: normal;
+    padding: 3px;
+    cursor: pointer;
+    text-decoration: none;
+}
+span{
+   
+        color: #333;
+        display: inline-block;
+        font-size: 13px;
+        font-weight: normal;
+        padding: 3px;
+    
+    
+}
+.HalfLeaveBox {
+    background-color: #ffe2b8;
+    border: 1px solid #00612E;
+    color: #00612E;
+    padding: 0 0 2px 2px;
+}
+.CurrentDateBox {
+    background-color: #D1E4F8;
+    border: 1px solid #00612E;
+    color: #00612E;
+    padding: 0 0 2px 2px;
+}
+.WeekendBox {
+    background-color: #F5F5F5;
+    border: 1px solid #00612E;
+    color: #00612E;
+    padding: 0 0 2px 2px;
+}
+.HolidayBox {
+    background-color: rgb(85, 100, 208);
+    opacity: 0.3;
+    border: 1px solid #00612E;
+    color: #00612E;
+    padding: 0 0 2px 2px;
+}
+.month-selector {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .main_timesheet_whole_content
+  {
+    border: 1px solid #dadada;
+    margin: 0 0 15px 0;
+    width: fit-content;
+  
+  }
+  .center
+{
+    background: #e6e6e6;
+color: #333;
+font-size: 16px;
+margin: 0;
+padding: 10px 12px 10px 12px;
+text-align: center;
+}
+.month_icon
+{
+    height:18px;
+    cursor: pointer;
+    font-size: 24px;
+}
+.month_selector_name
+{
+    font-size: 16px;
+}
+.date_table{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.work-item-header {
+    width: 464px;
+    font-size: 14px;
+    font-family: 'SegoeUISemibold', arial;
+    color: rgb(51, 51, 51);
+    font-weight: bold;
+  }
+  .P-header
+  {
+  width: 33px;
+  text-align: center;
+  font-size: 11px;
+  font-family: 'SegoeUISemibold', arial;
+  color: rgb(51, 51, 51);
+  font-weight: bold;
+
+  }
+  .Sigma-header
+  {
+    width: 33px;
+  text-align: left;
+  font-size: 12px;
+  font-family: 'SegoeUISemibold', arial;
+  color: rgb(51, 51, 51);
+  font-weight: bold;
+  border-right: 1px solid #dadada;
+
+  }
+  .timesheet_head
+  {
+    font-size: 13px;
+    font-family: 'SegoeUISemibold', arial;
+    font-weight: normal;
+    color: rgb(51, 51, 51);
+    border: 1px solid #dadada;
+
+
+
+  }
+  .project-name
+  {
+    width: 464px;
+    padding-left: 3px;
+    font-size: 13px;
+    color: rgb(51, 51, 51);
+    font-family: 'SegoeUISemibold', arial,tahoma;
+    font-weight: bold;
+    font-style: normal;
+
+
+  }
+  .toggle-arrow
+  {
+    cursor: pointer;
+  }
+  .worklog-value
+  {
+    font-size: 14px;
+  font-family: 'SegoeUISemibold', arial;
+  color: rgb(51, 51, 51);
+  font-weight: 400;
+  
+  }
+  .worklog-value1
+  {
+    font-size: 14px;
+  font-family: 'SegoeUISemibold', arial;
+  color: rgb(51, 51, 51);
+  font-weight: 400;
+  }
+  td.worklog-value {
+    width: 33px;
+    height: 35px;
+    text-align: center;
+    font-size: 13px;
+    font-style: normal;
+    font-family: SegoeUISemibold,arial;
+    border-right: 1px solid #dadada;
+    box-sizing: border-box;
+}
+.project_name_div
+{
+    border-bottom: 1px solid #dadada;
+    line-height: normal;
+    white-space: nowrap;
+
+}
+.ic18 {
+    background-position: -18px -144px !important;
+}
+
+.breadcrums_display
+{
+    font-size: 13px;
+    padding-top: 11px;
+    display: flex;
+}
+.WorkSpace_breadcrum
+{
+   font-size: 13px;
+   color: rgb(51,51,51);
+   font-family: "Segoe UI",arial,tahoma;
+   font-weight: 400; 
+   font-style: normal;
+   white-space: nowrap;
+   text-align: left;
+}
+.breadcrum_content {
+    display: flex; 
+    align-items: center; 
+  }
+  
+  .WorkSpace_breadcrum {
+    margin-right: 5px; 
+  }
+  
+  .breadcrumb-separator {
+    padding: 0 5px;
+        font-size: 17px;
+  }
+  .link_breadcrum {
+    color: #999999;
+    text-decoration: none;
+    font-size: 13px;
+    font-family: "Segoe UI",arial,tahoma;
+    font-weight: 400; 
+    font-style: normal;
+    white-space: nowrap;
+    text-align: left;
+    cursor: pointer;
+
+
+}
+  
+.navic {
+    background: url(src\assets\ic-leftnav.png) 0px 0px no-repeat;
+    width: 18px;
+    height: 18px;
+    display: inline-block;
+    margin-right: 6px;
+    vertical-align: -4px;
+}
+.content_projectwise
+{
+    border-bottom: 1px solid #dadada;
+    line-height: normal;
+
+}
+.black-border {
+    border-right: 1px solid red;
+  }
+  .project_title_img
+  {
+    margin-left: 5px;
+    vertical-align: -3px;
+    height: 16px;
+  }
+  .workproject-item-header
+  {
+    width: 464px;
+    font-size: 14px;
+    font-family: 'SegoeUISemibold', arial;
+    color: #428bca;
+        font-weight: 400;
+        min-width: 464px;
+  }
+  .Sigmaproject-header
+  {
+    width: 33px;
+  text-align: left;
+  font-size: 12px;
+  font-family: 'SegoeUISemibold', arial;
+  color: rgb(51, 51, 51);
+  font-weight: 400;
+  border-right: 1px solid #dadada;
+  }
+  .Pproject-header
+  {
+  width: 33px;
+  text-align: center;
+  font-size: 12px;
+  font-family: 'SegoeUISemibold', arial;
+  color: rgb(51, 51, 51);
+  font-weight: 400;
+
+  }
+  .Sigmamain-header
+  {
+    width: 33px;
+  text-align: left;
+  font-size: 14px;
+  font-family: 'SegoeUISemibold', arial;
+  color: rgb(51, 51, 51);
+  font-weight: bold;
+  border-right: 1px solid #dadada;
+  }
+  .Pmain-header
+  {
+  width: 33px;
+  text-align: center;
+  font-size: 14px;
+  font-family: 'SegoeUISemibold', arial;
+  color: rgb(51, 51, 51);
+  font-weight: bold;
+
+  }
+
+ .dailyworklog
+    {
+ 
+        text-align: right;
+        border-right: 1px solid rgb(221, 221, 221);
+        width: 469px;
+        color: rgb(51, 51, 51);
+        font-size: 13px;
+        font-family: "Segoe UI", arial, tahoma;
+        font-style: normal;
+        font-weight: 400;
+        height: 35px;
+    }
+    tr.bottom_timesheetvalue {
+        border-bottom: 1px solid #dadada;
+    }
+   .custom_tooltip
+   {
+    background-color: #00612E;
+   }
+      
+     
+
+    @media (max-width: 790px) {
+        .timesheet_main {
+            /* height: 600px;
+            overflow: auto; */
+            padding-bottom: 75px;
+        }
+    }
+    @media (max-width: 547px) {
+        .timesheet_main {
+            /* height: 600px;
+            overflow: auto; */
+            padding-bottom: 105px;
+
+        }
+         .workproject-item-header
+        {
+            font-size: 12px;
+        }
+        .project-name
+        {
+            font-size: 12px;
+
+        }
+        .work-item-header {
+          
+            font-size: 12px;
+           
+          }
+          .P-header
+          {
+         
+          font-size: 11px;
+         
+        
+          }
+          .Sigma-header
+          {
+           
+          font-size: 11px;
+          
+          }
+          .timesheet_head
+          {
+            font-size: 11px;
+            
+        
+        
+        
+          }
+          .Sigmamain-header
+  {
+   
+  font-size: 12px;
+ 
+  }
+  .Pmain-header
+  {
+ 
+  font-size: 12px;
+ 
+  }
+  .Pproject-header {
+   
+    font-size: 11px;}
+    }
+    td.worklog-value {
+       
+        font-size: 11px;}
+    @media (max-width: 410px) {
+        .timesheet_main {
+            /* height: 600px;
+            overflow: auto; */
+            padding-bottom: 178px;
+        }
+    }
+    .status-tooltip {
+        width: 180px;
+       position: absolute;
+    }
+    .projecthover_title_img
+    {
+      height: 16px;
+   
+
+    }
+    
+    a.blue-text {
+        color: #428bca !important;
+    }
+    /* .status-tooltip>div {
+        padding: 10px;
+        text-align: left;
+    }
+    
+    .status-title {
+        background-color: #f5f5f5;
+        color: #428bca;
+    } */
+  
+
+   

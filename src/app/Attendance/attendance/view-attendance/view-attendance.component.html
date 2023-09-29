@@ -1,0 +1,111 @@
+<div class="display_whole_content">
+    <div class="breadcrums_display">
+         <i class="navic ic18"></i>
+      <div class="breadcrum_content">
+        <span class="WorkSpace_breadcrum">My WorkSpace</span>
+        <span class="breadcrumb-separator">&gt;</span>
+        <a class="link_breadcrum">Attendance</a>
+  
+  
+  </div>
+    </div>
+    <div class="heading_table">
+      <div class="display_header">
+        {{ selectedItemName ? selectedItemName : "My Attendance" }}
+      </div>
+      <div *ngIf="showAttendanceSuccess" class="success-message">
+        <app-error-message [showSuccess]="showAttendanceSuccess" [successMessage]="attendanceSuccessMessage"></app-error-message>
+    </div>
+    <form [formGroup]="searchAttendanceForm">
+     
+        <div class="attendancefilter">
+            <mat-form-field appearance="outline">
+                <mat-label>Select Month</mat-label>
+                <mat-select  formControlName="month">
+                    <mat-option *ngFor="let month of allmonths" [value]="month.key">
+                        {{month.name}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Select Year</mat-label>
+                <mat-select  formControlName="year">
+                    <mat-option *ngFor="let year of [currentYear, (currentYear - 1) , (currentYear - 2)]"
+                        [value]="year">
+                        {{year}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div class="attendancefilter-actions">
+            <button class="btn btn-primary theme-btn me-2 rounded-0" (click)="searchAttendance()"><i
+                    class="fa fa-search"></i> Search</button>
+            <button class="btn btn-default rounded-0" (click)="resetAttendance()"><i class="fa fa-refresh"></i>
+                Reset</button>
+        </div>
+    </form>
+    <div class="attendance-result" style="font-size: small; color: black;">
+        <div class="flex-between"
+        [ngStyle]="attendanceApproved ? {'margin': '10px 0'} : {'margin': '10px 0 10px auto'}">
+        <div class="attendance-submitted-message" *ngIf="attendanceApproved">
+            Today's attendance has been submitted by your RO. Please contact him/her now in case of any
+            corrections.
+        </div>
+        <div >
+            <span class="FullLeaveBox ColorBox" style="margin-bottom:-2px !important"></span>&nbsp;<label>Full
+                Leave&nbsp;</label>
+            <span class="HalfLeaveBox ColorBox" style="margin-bottom:-2px !important"></span>&nbsp;<label>Half
+                Leave&nbsp;</label>
+            <span class="CurrentDate  ColorBox"
+                style="margin-bottom:-2px !important"></span>&nbsp;<label>Today&nbsp;</label>
+            <span class="WeekendBox ColorBox"
+                style="margin-bottom:-2px !important"></span>&nbsp;<label>Weekend&nbsp;</label>
+            <span class="HolidayBox ColorBox"
+                style="margin-bottom:-2px !important"></span>&nbsp;<label>Holiday&nbsp;</label>
+        </div>
+        </div>
+        <form>
+            <div class="attendance-calender-title"> {{attendanceTitle}} <span class="totalAttendance">Total =>
+                Present: {{totalPresent}} & Absent: {{totalAbsent}}</span>
+        </div>
+        <div style="overflow-x: auto;">
+            <div class="attendance-calender">
+                <div *ngFor="let a of attendance" class="border w-100 mx-auto"
+                    matTooltip="{{a.currentDate | date : 'dd-MM-yyyy'}} {{a.currentWeekDay}}">
+                    {{a.currentDate | date : 'd'}}<br />{{a.currentWeekDay?.charAt(0)}}
+                    <!-- {{a.attendanceOption}} -->
+                    <!-- {{a.isApproved}} -->
+                </div>
+            </div>
+            <div class="attendance-calender">
+                <div *ngFor="let a of attendance"
+                    class="border w-100 mx-auto date-{{a.currentDate | date : 'dd-MM-yyyy'}} day-{{a.currentWeekDay?.charAt(0)}} color-{{a.attendanceOption}}"
+                    [ngClass]="{'holidayColor': isholyday(a.currentDate), 'colorApproved': a.isApproved}">
+                    <div *ngIf="(a.currentDate | date) == (currentDate | date)">
+                        <button class="btn attendance-btn higlight" [matMenuTriggerFor]="attendanceMenu"
+                            [ngClass]="{'disabled' : attendanceApproved}">
+                            {{todaysAttendance}}
+                        </button>
+                        <mat-menu #attendanceMenu="matMenu">
+                            <button mat-menu-item (click)="updateAttendance(3)">Present</button>
+                            <button mat-menu-item (click)="updateAttendance(2)">Absent</button>
+                            <button mat-menu-item (click)="updateAttendance(1)">Half Leave</button>
+                        </mat-menu>
+                    </div>
+                    <div *ngIf="(a.currentDate | date) != (currentDate | date)">
+                        <button class="btn attendance-btn disabled">
+                            {{AttendanceOption[(a.attendanceOption ?? 4) - 1]}}
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="my-2" style="float: right;" *ngIf="!attendanceApproved">
+            <button class="btn btn-primary theme-btn rounded-0" (click)="addAttendance()">
+                <i class="fa fa-save"></i> Save
+            </button>
+        </div>
+            </form>
+    </div>
+    </div>
+</div>

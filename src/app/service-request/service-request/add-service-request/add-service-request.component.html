@@ -1,0 +1,171 @@
+
+<div class="modal-content">
+    <div class="modal-header container-fluid">
+  <h1 mat-dialog-title class="modal-title">Service Request</h1>
+  <button
+        [mat-dialog-close]="false"
+        mat-icon-button
+        style="float: right; margin-right: 5px"
+      >
+        <mat-icon>cancel</mat-icon>
+      </button>
+</div>
+
+ 
+    <form [formGroup]="addServiceRequestForm">
+        <div *ngIf="showServiceRequestError" class="success-message">
+            <app-error-message [showError]="showServiceRequestError" [errorMessage]="serviceRequestErrorMessage"></app-error-message>
+            </div>
+            <div *ngIf="showServiceRequestSuccess" class="success-message">
+            <app-error-message [showSuccess]="showServiceRequestSuccess" [successMessage]="serviceRequestSuccessMessage"></app-error-message>
+        
+        </div>
+        <div class="main_div_add_request">
+            <div class="addrequestcontent">
+                <mat-dialog-content class="mat_dialog_content">
+                    <div class="form_field_one">
+                        <div class="flex-container">
+                          <div class="label-container">
+                            <label class="content_title">Name:</label>
+                          </div>
+                          <div class="content">
+                            <mat-form-field appearance="fill" class="full-width">
+                              <input matInput placeholder=""  readonly [formControlName]="'name'" />
+                            </mat-form-field>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="form_field_one">
+                        <div class="flex-container">
+                          <div class="label-container">
+                            <label class="content_title">Requested Date:</label>
+                          </div>
+                          <div class="content">
+                            <mat-form-field appearance="fill" class="full-width">
+                              <input matInput placeholder="" readonly  [formControlName]="'requestedDate'"/>
+                            </mat-form-field>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="form_field_one">
+                        <div class="flex-container">
+                          <div class="label-container">
+                            <label class="content_title">Service Group:</label>
+                          </div>
+                          <div class="content">
+                            <mat-form-field appearance="outline" class="dropdownclass" >
+                               
+                                <mat-select formControlName="serviceGroupId"  (selectionChange)="onServiceGroupSelectioChange($event)">
+                                    <mat-option value="Select">Select</mat-option>
+                                    <mat-option *ngFor="let option of ServiceGroupOPtions" [value]="option.value">
+                                        {{ option.name }}
+                                      </mat-option>
+                                </mat-select>
+                              </mat-form-field>
+                              
+                          </div>
+                        </div>
+                      </div>
+                      <div class="form_field_one">
+                        <div class="flex-container">
+                          <div class="label-container">
+                            <label class="content_title">Category:</label>
+                          </div>
+                          <div class="content">
+                            <mat-form-field appearance="outline" class="dropdownclass" >
+                                
+                                <mat-select formControlName="categoryId"  (selectionChange)="onCategoryGroupSelectionChange($event)">
+                                    <mat-option value="Select">Select</mat-option>
+                                    <mat-option  *ngFor="let category of categoryOptions" [value]="category.categoryId">
+                                        {{ category.categoryName }}
+                                      </mat-option>
+                                </mat-select>
+                              </mat-form-field>
+                              
+                          </div>
+                        </div>
+                      </div>
+                      <div class="form_field_one">
+                        <div class="flex-container">
+                          <div class="label-container">
+                            <label class="content_title">Sub Category:</label>
+                          </div>
+                          <div class="content">
+                            <mat-form-field appearance="outline" class="dropdownclass" >
+                               
+                                <mat-select formControlName="subCategoryId"  >
+                                    <mat-option value="Select">Select</mat-option>
+                                  <mat-option *ngFor="let subcategory of subCategoryOptions" [value]="subcategory.subCategoryId">
+                                    {{subcategory.subCategoryName}}
+                                    
+                                  </mat-option>
+                                </mat-select>
+                              </mat-form-field>
+                              
+                          </div>
+                        </div>
+                      </div>
+                      <div class="form_field_one">
+                        <div class="flex-container">
+                          <div class="label-container">
+                            <label class="content_title">Priority:</label>
+                          </div>
+                          <div class="content">
+                            <mat-form-field appearance="outline" class="dropdownclass" >
+                                <mat-label>Priority:</mat-label>
+                                <mat-select [(value)]="defaultSelectedPriority">
+                                  <mat-option *ngFor="let option of priorityOptions" [value]="option">
+                                    {{option}}
+                                  </mat-option>
+                                </mat-select>
+                              </mat-form-field>
+                              
+                          </div>
+                        </div>
+                      </div>
+                      <div class="form_field_one">
+                        <div class="flex-container">
+                          <div class="label-container">
+                            <label class="content_title">Service Details:</label>
+                          </div>
+                          <div class="content">
+                            <mat-form-field appearance="outline" class="full-width">
+                                <mat-label></mat-label>
+                                <textarea matInput  formControlName="serviceDetails"></textarea>
+                              </mat-form-field>
+                          </div>
+                        </div>
+                      </div>
+                      <mat-divider class="divider"></mat-divider>
+
+        <div class="footer">
+          <button
+            class="save-btn"
+            type="submit"
+            mat-raised-button
+            color="primary"
+            (click)="OnSaveServiceRequest()"
+            
+            
+
+          >
+            <mat-icon>print</mat-icon>
+            Save
+          </button>
+          <button
+            class="close-btn"
+            mat-raised-button
+            color="primary"
+            [mat-dialog-close]="false"
+          >
+            <mat-icon>cancel</mat-icon>Close
+          </button>
+        </div>
+                     </mat-dialog-content>
+                </div>
+                </div>
+            </form>
+ 
+ 
+</div>
+

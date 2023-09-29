@@ -1,0 +1,19 @@
+<div class="popup-maindiv">
+    <div class="d-flex justify-content-around ">
+    <h3 class="popup-title">{{ data.message }}</h3>
+    <button class="cross-popup-button" (click)="closeDialog()">
+      <mat-icon>cancel</mat-icon>
+    </button>
+  
+</div>
+    <div class="popup-button">
+      <div class="pop-up-buttons">
+        <button mat-raised-button color="primary" [mat-dialog-close]="false">
+          No
+        </button>
+        <button mat-raised-button color="warn" [mat-dialog-close]="true">
+          Yes
+        </button>
+      </div>
+    </div>
+  </div>

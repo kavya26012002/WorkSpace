@@ -1,0 +1,166 @@
+mat-sidenav{
+   
+    /* margin: 16px; */
+    width: 200px;
+    border-right: none;
+    background: #e3e3e3;
+    box-shadow: 2px 2px 3px rgb(0 0 0 / 15%);    
+    text-align: center;
+    overflow: hidden;
+
+}
+
+mat-sidenav-container{
+    height: 100%;
+    overflow-y: hidden;
+}
+
+.menu-button{
+    width: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    font-size: 1rem;
+    color: white;
+
+  
+}
+.mat-mdc-button:not(:disabled) {
+    background-color: transparent;
+color: #444;
+font-family: "Segoe UI", arial, tahoma !important;
+    font-weight: normal;
+    font-style: normal;
+    font-size: 15px;
+}
+
+mat-icon{
+    margin-right:8px
+}
+mat-divider{
+    margin-top: 0px;
+    margin-bottom:0px;
+background-color: rgba(255, 255 , 255, 0.5);
+}
+.navbar-icon{
+    font-size: 20px;
+    width: max-content;
+}
+.worspace-dropdown-content
+{
+    padding: 4px 10px 6px 32px;
+    font-size: 13px;
+    line-height: 1.2;
+    text-align: start;
+    display: flex;
+   
+}
+.workspace-dropdown-button
+{
+    display: flex;
+    margin-left: 10px;
+    font-size: 17px;
+    opacity: 0.7;
+    margin-top: 2px;
+}
+.sidebar-content{
+    width: max-content;
+    font-size: 1rem;
+}
+.knowledge-dropdown-button{
+    font-size: 17px;
+    margin-left: 3px;
+    opacity: 0.7;
+    margin-top: 2px;
+}
+.knowledge-dropdown-content
+{
+    padding: 0px 10px 6px 45px;
+    font-size: 13px;
+    line-height: 1.2;
+    text-align: start;
+    display: flex;
+   
+}
+.project-dropdown-button
+{
+    display: flex;
+    margin-left: 69px;
+    font-size: 17px;
+    opacity: 0.7;
+    margin-top: 2px;
+}
+.project-dropdown-content
+{
+    padding: 4px 10px 6px 32px;
+    font-size: 13px;
+    line-height: 1.2;
+    text-align: start;
+    display: flex;
+   
+}
+.training-dropdown-button
+{
+    display: flex;
+    margin-left: 60px;
+    font-size: 17px;
+    opacity: 0.7;
+    margin-top: 2px;
+}
+.training-dropdown-content
+{
+    padding: 4px 10px 6px 32px;
+    font-size: 13px;
+    line-height: 1.2;
+    text-align: start;
+    display: flex;
+   
+}
+.sidebar-main-heading
+{
+    font-size: 14px;
+}
+.sidebar-sub-heading
+{
+    font-size: 13px;
+}  
+.router-link
+{
+    color: black;
+    text-decoration: none;
+}
+.navic {
+    background: url(src\assets\ic-leftnav.png) 0px 0px no-repeat;
+    width: 18px;
+    height: 18px;
+    display: inline-block;
+    margin-right: 6px;
+    vertical-align: -4px;
+}
+.pmsic3 {
+    background-position: -18px 0px;
+}
+.ic18 {
+    background-position: -18px -144px;
+}
+.ic16 {
+    background-position: -18px -126px;
+}
+.pmsic1 {
+    background-position: -18px -72px;
+}
+/* .active-link {
+    background-color: white;
+  } */
+
+
+  /* mediaQuery */
+ 
+@media (max-width : 767px) {
+    mat-drawer{
+        width: 100% !important;
+    }
+    mat-sidenav{
+        width: 100%;
+    }
+}

@@ -1,0 +1,328 @@
+<div class="display_whole_content">
+  <div class="breadcrums_display">
+    <i class="navic ic18"></i>
+ <div class="breadcrum_content">
+   <span class="WorkSpace_breadcrum">My WorkSpace</span>
+   <span class="breadcrumb-separator">&gt;</span>
+   <a class="link_breadcrum">Time Logs</a>
+
+
+</div>
+</div>  
+<div class="heading_table">
+    <div class="display_header">
+      {{ selectedItemName ? selectedItemName : "TimeLogs" }}
+    </div>
+    <div class="table1">
+      <div class="searching">
+        <div class="content_searching">
+          <div class="content_searching1">
+            <div class="filter_heading">
+              <span class="filter_name">Select Type</span>
+            </div>
+            <div class="filter_dropdown">
+              <button
+                class="filter_dropdownclass"
+                mat-button
+                [matMenuTriggerFor]="selectProject"
+                #projectMenuTrigger="matMenuTrigger"
+              >
+                <div class="main_valign-centre">
+                  <div class="valign-centre-project">
+                    <div class="name-project">
+                      <span class="header-project-name">{{
+                        selectType || "Monthly"
+                      }}</span>
+                    </div>
+                    <div class="project-dropdown">
+                      <mat-icon class="">keyboard_arrow_down</mat-icon>
+                    </div>
+                  </div>
+                </div>
+              </button>
+              <mat-menu
+                #selectProject="matMenu"
+                (closed)="onProjectMenuClosed()"
+              >
+                <button mat-menu-item (click)="selectTypeValue('Monthly')">
+                  Monthly
+                </button>
+                <button
+                  mat-menu-item
+                  (click)="selectTypeValue('Yearly'); callApiYearly()"
+                >
+                  Yearly
+                </button>
+              </mat-menu>
+            </div>
+          </div>
+          <div class="content_searching2" *ngIf="contentSearching2Visible">
+            <div class="filter_heading">
+              <span class="filter_name">Select Month</span>
+            </div>
+            <div class="filter_dropdown">
+              <button
+                class="filter_dropdownclass"
+                mat-button
+                [matMenuTriggerFor]="selectmonth"
+                #projectMenuTrigger="matMenuTrigger"
+              >
+                <div class="main_valign-centre">
+                  <div class="valign-centre-project">
+                    <div class="name-project">
+                      <span class="header-project-name">{{ selectMonth }}</span>
+                    </div>
+                    <div class="project-dropdown">
+                      <mat-icon class="">keyboard_arrow_down</mat-icon>
+                    </div>
+                  </div>
+                </div>
+              </button>
+              <mat-menu #selectmonth="matMenu" (closed)="onProjectMenuClosed()">
+                <button
+                  mat-menu-item
+                  *ngFor="let month of months"
+                  (click)="selectMonthValue(month)"
+                >
+                  {{ month }}
+                </button>
+              </mat-menu>
+            </div>
+          </div>
+          <div class="content_searching3">
+            <div class="filter_heading">
+              <span class="filter_name">Select Year</span>
+            </div>
+            <div class="filter_dropdown">
+              <button
+                class="filter_dropdownclass"
+                mat-button
+                [matMenuTriggerFor]="selectyear"
+                #projectMenuTrigger="matMenuTrigger"
+              >
+                <div class="main_valign-centre">
+                  <div class="valign-centre-project">
+                    <div class="name-project">
+                      <span class="header-project-name">{{ selectYear }}</span>
+                    </div>
+                    <div class="project-dropdown">
+                      <mat-icon class="">keyboard_arrow_down</mat-icon>
+                    </div>
+                  </div>
+                </div>
+              </button>
+              <mat-menu #selectyear="matMenu" (closed)="onProjectMenuClosed()">
+                <button
+                  mat-menu-item
+                  *ngFor="let year of years"
+                  (click)="selectYearValue(year)"
+                >
+                  {{ year }}
+                </button>
+              </mat-menu>
+            </div>
+          </div>
+        </div>
+      </div>
+      <mat-divider></mat-divider>
+      <div class="serch_clearbtn">
+        <div class="buttons">
+          <div class="example-button-row">
+            <button
+              class="btn-color search-btn"
+              mat-fab
+              extended
+              color="primary"
+              (click)="onSearchButtonClick()"
+              *ngIf="contentSearching2Visible"
+            >
+              <mat-icon>search</mat-icon>
+              Search
+            </button>
+
+            <button
+              class="btn-color search-btn"
+              mat-fab
+              extended
+              color="primary"
+              (click)="onSearchYearlyButtonClick()"
+              *ngIf="!contentSearching2Visible"
+            >
+              <mat-icon>search</mat-icon>
+              Search
+            </button>
+            <div class="example-button-row" *ngIf="contentSearching2Visible">
+              <button
+                class="btn-color clear-btn"
+                mat-fab
+                extended
+                color="primary"
+                (click)="clearfilter()"
+              >
+                <mat-icon>loop</mat-icon>
+                Clear
+              </button>
+            </div>
+
+            <div class="example-button-row" *ngIf="!contentSearching2Visible">
+              <button
+                class="btn-color clear-btn"
+                mat-fab
+                extended
+                color="primary"
+                (click)="clearyearly()"
+              >
+                <mat-icon>loop</mat-icon>
+                Clear
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <mat-divider></mat-divider>
+    <div class="middle-section">
+      <div class="content_middle_section">
+        <div class="LowWorkHours">
+          <span
+            class="lowWorkHourbox"
+            style="display: inline-block; height: 15px; width: 15px"
+          ></span>
+
+          <label class="lowworkloghourscontent">Low Work Log Hours</label>
+        </div>
+        <div class="LowWorkHours">
+          <span
+            class="overWorkHourbox"
+            style="display: inline-block; height: 15px; width: 15px"
+          ></span>
+
+          <label class="overworkloghourscontent">Over Work Log Hours</label>
+        </div>
+        <div class="LowWorkHours" *ngIf="contentSearching2Visible">
+          <label class="shifttimecontent">Shift Time :09:00 to 18:30</label>
+        </div>
+      </div>
+
+      <div class="maintable" *ngIf="contentSearching2Visible">
+        <table class="kendo-table">
+          <thead>
+            <tr>
+              <th
+                *ngFor="let column of topColumns"
+                [style.width.px]="column.width"
+                [style.backgroundColor]="'whitesmoke'"
+              >
+                {{ column.title }}
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let row of gridTopData">
+              <td *ngFor="let column of topColumns">
+                {{ column.field === "Late Days" ? "0" : row[column.field] }}
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="bottom_table">
+          <table class="kendo-table bottompart">
+            <thead>
+              <tr>
+                <th
+                  *ngFor="let column of bottomColumns"
+                  [style.width.px]="column.width"
+                  [style.backgroundColor]="'whitesmoke'"
+                >
+                  {{ column.title }}
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let row of gridBottomData">
+                <td *ngFor="let column of bottomColumns">
+                  <div *ngIf="column.field === 'date'" (mouseenter)="onProjectTitleHover(row[column.field] || '')" (mouseleave)="onProjectTitleLeave()"
+                  placement="top" theme="light" contentType='html' 
+                  tooltip="
+                  
+                    
+                    <div class='table'>
+                      <div class='row'>
+                        <div class='label-with-line'><label class='label-heading'>Time In</label></div>
+
+                        <div  class='column'>{{tooltipResponseData.timeIn1}}</div>
+                        <div  class='column'>{{tooltipResponseData.timeIn2}}</div>
+                      </div>
+                      <div class='row'>
+                        <div class='label-with-line'><label class='label-heading'>Time Out</label></div>
+
+                        <div class='column'>{{tooltipResponseData.timeOut1}}</div>
+                        <div class='column'>{{tooltipResponseData.timeOut2}}</div>
+                      </div>
+                      <div class='row'>
+                        <div class='label-with-line'><label class='label-heading'>Out Hours</label></div>
+
+                        <div  class='column'>{{tooltipResponseData.outHours1}}</div>
+                        <div class='column'>{{tooltipResponseData.outHours2}}</div>
+                      </div>
+                      <div class='row'>
+                        <div class='label-with-line'><label class='label-heading'>Work Hours</label></div>
+
+                        <div class='column'>{{tooltipResponseData.workHours1}}</div>
+                        <div class='column'>{{tooltipResponseData.workHours2}}</div>
+                      </div>
+                    </div>
+                    
+                        
+                   
+                 ">
+                    {{ row[column.field] }}
+                  </div>
+                  <ng-container *ngIf="column.field === 'lateComer'">
+                    {{ row[column.field] ?? '--'}}
+                  </ng-container>
+                  <ng-container *ngIf="column.field === 'difference'">
+                    {{ row[column.field] ?? '0'}}
+                  </ng-container>
+                  <ng-container *ngIf="column.field !== 'lateComer' && column.field !== 'date' && column.field !== 'difference'">
+                    {{ row[column.field] ?? '--'}}
+                  </ng-container>
+
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="maintable" *ngIf="!contentSearching2Visible">
+        <table class="kendo-table">
+          <thead>
+            <tr>
+              <th
+                *ngFor="let column of yaerlyColumns"
+                [style.width.px]="column.width"
+                [style.backgroundColor]="'whitesmoke'"
+              >
+                {{ column.title }}
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let row of gridYearly">
+              <td *ngFor="let column of yaerlyColumns">
+                {{
+                  column.field === "Late Days"
+                    ? "0"
+                    : column.field === "outHours"
+                    ? "00:00 [00:00] hrs"
+                    : row[column.field]
+                }}
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,173 @@
+
+<mat-sidenav-container class="sidebar">
+    <mat-sidenav mode="side" opened>
+        <button mat-button class="menu-button">
+            <div class="d-flex ">
+                <div class="icons">
+                    <i class="navic pmsic3"></i>
+                    <!-- <mat-icon class="navbar-icon">desktop_windows</mat-icon> -->
+                </div>
+                <div class="icon-name">Dashboard</div>
+            </div>
+        </button>
+        <mat-divider class="full-width-divider"></mat-divider>
+<div>
+        <button mat-button class="menu-button" (click)="toggleWorkspaceDropdown()">
+            <div class="d-flex ">
+                <div class="icons">
+                    <i class="navic ic18"></i>
+                    <!-- <mat-icon class="navbar-icon">desktop_windows</mat-icon> -->
+                </div>
+                <div class="sidebar-content">
+                    <span class="sidebar-main-heading">My WorkSpace</span>
+                </div>
+                <mat-icon class="workspace-dropdown-button" 
+                    [ngClass]="iconToggleWorkspace  ? 'icon-right' : 'icon-down'">
+                    {{ iconToggleWorkspace ? 'keyboard_arrow_right' : 'keyboard_arrow_down' }} </mat-icon>
+                <!-- <mat-icon class="navbar-icon" (click)="toggleWorkspaceDropdown()">desktop_windows</mat-icon> -->
+            </div>
+        </button>
+        <div *ngIf="showWorkspaceDropdown" class="workspacedropdown">
+            <div class="workspace-dropdown">
+                <div class="worspace-dropdown-content">
+                    <a class="router-link activeHover "  (click)="onMenuItemClick('Attendance')" routerLinkActive="active"  routerLink="/attendance/view-attendance">Attendance</a>
+                </div>
+                <div class="worspace-dropdown-content">
+                    Projects
+                </div>
+                <div class="worspace-dropdown-content">
+                    <a class="router-link activeHover "  (click)="onMenuItemClick('WorkItems')" routerLinkActive="active"  routerLink="/work-item/view-workItem">WorkItems</a>
+                </div>
+                <div class="worspace-dropdown-content">
+                    <a class="router-link activeHover "routerLink="/timeSheets/view-timeSheet" (click)="onMenuItemClick('My TimeSheets')" routerLinkActive="active">TimeSheets</a>
+                    
+                </div>
+                <div class="worspace-dropdown-content">
+                    <a class="router-link activeHover " routerLink="/time-logs/view-timeLogs" (click)="onMenuItemClick('TimeLogs')" routerLinkActive="active">Time Logs</a>
+                </div>
+                <div class="worspace-dropdown-content">
+                    <a class="router-link" routerLinkActive="active-link"  routerLink="/leave-request/view-leaveRequest" (click)="onMenuItemClick('My LeaveRequest')" >Leave Request</a> 
+                </div>
+                <div class="worspace-dropdown-content">
+                   <a class="router-link" routerLinkActive="active-link" routerLink="/service-request/view-serviceRequest" (click)="onMenuItemClick('ServiceRequest')">Service Request</a> 
+                </div>
+                <div class="worspace-dropdown-content">
+                    Library
+                </div>
+                <div class="worspace-dropdown-content">
+                    Documents
+                </div>
+                <div class="d-flex" (click)="toggleKnowledgeDropdown()" style="cursor: pointer;">
+                    <div class="worspace-dropdown-content">
+                        <div class="sidebar-content">
+                            <span class="sidebar-sub-heading">Knowledge Repository</span>
+                        </div>
+                        <mat-icon class="knowledge-dropdown-button" 
+                            [ngClass]="iconToggleKnowledge  ? 'icon-right' : 'icon-down'">
+                            {{ iconToggleKnowledge ? 'keyboard_arrow_right' : 'keyboard_arrow_down' }}
+                        </mat-icon>
+                    </div>
+                </div>
+                <div *ngIf="showKnowledgeDropdown" class="knowledgedropdown">
+                    <div class="knowledge-dropdown">
+                        <div class="knowledge-dropdown-content">
+                            Repository
+                        </div>
+                        <div class="knowledge-dropdown-content">
+                            My Contribution
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+        <mat-divider class="full-width-divider"></mat-divider>
+        <button mat-button class="menu-button" (click)="toggleProjectDropdown()">
+            <div class="d-flex ">
+                <div class="icons">
+                    <i class="navic ic16"></i>
+                </div>
+                <div class="sidebar-content">
+                    <span class="sidebar-main-heading">Project</span>
+                </div>
+                <mat-icon class="project-dropdown-button" 
+                    [ngClass]="iconToggleProject  ? 'icon-right' : 'icon-down'">
+                    {{ iconToggleProject ? 'keyboard_arrow_right' : 'keyboard_arrow_down' }} </mat-icon>
+            </div>
+        </button>
+        <div *ngIf="showProjectDropdown" class="projectdropdown">
+            <div class="project-dropdown">
+                <div class="project-dropdown-content">
+                    Product Backlogs
+                </div>
+                <div class="project-dropdown-content">
+                    Work Groups
+                </div>
+                <div class="project-dropdown-content">
+                    Work Backlogs
+                </div>
+                <div class="project-dropdown-content">
+                    Burn Down
+                </div>
+                <div class="project-dropdown-content">
+                    Documentations
+                </div>
+            </div>
+        </div>
+
+
+
+
+        <mat-divider class="full-width-divider"></mat-divider>
+        <button mat-button class="menu-button" (click)="toggleTainingDropdown()">
+            <div class="d-flex ">
+                <div class="icons">
+                    <i class="navic pmsic1"></i>
+                </div>
+                <div class="sidebar-content">
+                    <span class="sidebar-main-heading">Training</span>
+                </div>
+                <mat-icon class="training-dropdown-button" 
+                    [ngClass]="iconToggleTraining  ? 'icon-right' : 'icon-down'">
+                    {{ iconToggleTraining ? 'keyboard_arrow_right' : 'keyboard_arrow_down' }} </mat-icon>
+            </div>
+        </button>
+        <div *ngIf="showTrainingDropdown" class="tariningdropdown">
+            <div class="training-dropdown">
+                <div class="training-dropdown-content">
+                    Product Backlogs
+                </div>
+                <div class="training-dropdown-content">
+                    Work Groups
+                </div>
+                <div class="training-dropdown-content">
+                    Work Backlogs
+                </div>
+                <div class="training-dropdown-content">
+                    Burn Down
+                </div>
+                <div class="training-dropdown-content">
+                    Documentations
+                </div>
+            </div>
+        </div>
+        <mat-divider class="full-width-divider"></mat-divider>
+        <button mat-button class="menu-button">
+            <div class="d-flex">
+                <div class="icons">
+                    <i class="navic ic1"></i>
+
+                </div>
+                <div class="sidebar-content">
+                    <span class="sidebar-main-heading">Device Managmnent</span>
+                    </div>
+            </div>
+
+        </button>
+
+    </mat-sidenav>
+ 
+</mat-sidenav-container>
+

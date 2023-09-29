@@ -1,0 +1,27 @@
+:host {
+    width: 83vw;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .k-grid {
+    flex: 1;
+  }
+  
+  .k-grid-header {
+    border-bottom: 1px solid #ccc;
+  }
+  
+  .k-grid-content {
+    overflow-x: auto;
+    border-bottom: 1px solid #ccc;
+  }
+  
+  .k-grid-header th {
+    border-right: 1px solid #ccc;
+  }
+  
+  .k-grid-content td {
+    border-right: 1px solid #ccc;
+  }
+  

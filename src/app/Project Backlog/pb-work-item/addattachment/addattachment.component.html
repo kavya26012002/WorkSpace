@@ -1,0 +1,100 @@
+
+<div class="modal-content">
+    <div class="modal-header container-fluid">
+  <h1 mat-dialog-title class="modal-title">Add Attachment</h1>
+  <button
+        [mat-dialog-close]="false"
+        mat-icon-button
+        style="float: right; margin-right: 5px"
+      >
+        <mat-icon>cancel</mat-icon>
+      </button>
+</div>
+
+ 
+    <form [formGroup]="addAttachmentForm">
+        <div *ngIf="showAttachmentError" class="success-message">
+            
+            <app-error-message [showError]="showAttachmentError" [errorMessage]="attachmentErrorMessage"></app-error-message>
+        </div>
+        <div *ngIf="showAttachmentSuccess" class="success-message">
+            <app-error-message [showSuccess]="showAttachmentSuccess" [successMessage]="attachmentSuccessMessage"></app-error-message>
+        
+        </div>
+        <div class="main_div_add_request">
+            <div class="addrequestcontent">
+                <mat-dialog-content class="mat_dialog_content">
+                    <div class="form_field_one">
+                        <div class="flex-container">
+                          <div class="label-container">
+                            <label class="content_title">Attachment:</label>
+                          </div>
+                          <div class="content">
+                           
+                              <div class="attachmentfile">
+                                <input #file type="file" name="file" class="form-control error" required="required" aria-required="true" style="border-radius:0%" accept=".docx,.txt,.xls,.pdf,.jpeg,.jpg,.png,.bmp,.gif"/>
+                                <span class="btn input-group-addon">
+                                    <i class="fa fa-question-circle" placement="right" theme="light" contentType='html'
+                                    tooltip="<div class='status-tooltip'><div class='status-title'>Valid file extensions</div><div>Only .docx, .txt, .xls, .pdf, .jpeg, .jpg, .png, .bmp, .gif, allowed.</div></div>"></i>
+                                        <!-- <i class="fa fa-question-circle"></i> -->
+    
+                                   
+                                </span>
+                            
+                              </div>
+
+                           
+                           
+                          </div>
+                        </div>
+                      </div>
+                      <div class="form_field_one">
+                        <div class="flex-container">
+                          <div class="label-container">
+                            <label class="content_title">Description Date:</label>
+                          </div>
+                          <div class="content">
+                            <mat-form-field appearance="fill" class="full-width">
+                                <textarea matInput formControlName="description" ></textarea>
+                            </mat-form-field>
+                          </div>
+                        </div>
+                      </div>
+                    
+                     
+                      
+                     
+                     
+                      <mat-divider class="divider"></mat-divider>
+
+        <div class="footer">
+          <button
+            class="save-btn"
+            type="submit"
+            mat-raised-button
+            color="primary"
+            
+            (click)="upload(file.files)"
+            
+
+          >
+            <mat-icon>print</mat-icon>
+            Save
+          </button>
+          <button
+            class="close-btn"
+            mat-raised-button
+            color="primary"
+            [mat-dialog-close]="false"
+          >
+            <mat-icon>cancel</mat-icon>Close
+          </button>
+        </div>
+                     </mat-dialog-content>
+                </div>
+                </div>
+            </form>
+ 
+ 
+</div>
+

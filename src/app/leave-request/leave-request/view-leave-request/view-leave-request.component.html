@@ -1,0 +1,229 @@
+<div class="display_whole_content">
+  <div class="breadcrums_display">
+    <i class="navic ic18"></i>
+ <div class="breadcrum_content">
+   <span class="WorkSpace_breadcrum">My WorkSpace</span>
+   <span class="breadcrumb-separator">&gt;</span>
+   <a class="link_breadcrum">Leave Requests</a>
+</div>
+</div>   
+<div class="heading_table">
+    <div class="display_header">
+      {{ selectedItemName ? selectedItemName : "My LeaveRequest" }}
+      <div class="add_btn">
+        <mat-icon class="add_btn_icon" routerLink="/leave-request/add-leaveRequest" (click)="onMenuItemClick('LeaveRequest')">add</mat-icon>
+      </div>
+    </div>
+
+   <div *ngIf="showLeaveRequestSuccess" class="success-message">
+      <app-error-message [showSuccess]="showLeaveRequestSuccess" [successMessage]="leaveRequestSuccessMessage"></app-error-message>
+    </div>
+    <div class="table1">
+      <div class="searching">
+        <div class="content_searching">
+          <div class="content_searching1">
+            <div class="filter_heading">
+              <span class="filter_name">Date From</span>
+            </div>
+            <div class="filter_dropdown">
+              <mat-form-field
+                appearance="outline"
+                class="leave_requestdatepicker"
+              >
+                <mat-label>Choose a date</mat-label>
+                <input matInput [matDatepicker]="pickerFrom" [value]="dateFrom" (dateChange)="onDateFromChanged($event)"
+                >
+                <mat-datepicker-toggle matIconSuffix [for]="pickerFrom">
+                </mat-datepicker-toggle>
+                <mat-datepicker  #pickerFrom ></mat-datepicker>
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="content_searching2">
+            <div class="filter_heading">
+              <span class="filter_name">Date To</span>
+            </div>
+            <div class="filter_dropdown">
+              <mat-form-field
+                appearance="outline"
+                class="leave_requestdatepicker"
+              >
+                <mat-label>Choose a date</mat-label>
+                <input matInput [matDatepicker]="pickerTo" [value]="dateTo" (dateChange)="onDateToChanged($event)"/>
+
+                <mat-datepicker-toggle matIconSuffix [for]="pickerTo">
+                </mat-datepicker-toggle>
+                <mat-datepicker #pickerTo ></mat-datepicker>
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="content_searching3">
+            <div class="filter_heading">
+              <span class="filter_name">Status</span>
+            </div>
+            <div class="filter_dropdown">
+              <button
+                class="filter_dropdownclass"
+                mat-button
+                [matMenuTriggerFor]="selectStatus"
+                #projectMenuTrigger="matMenuTrigger"
+              >
+                <div class="main_valign-centre">
+                  <div class="valign-centre-project">
+                    <div class="name-project">
+                      <span class="header-project-name">{{
+                        selectedLeaveRequestStatus || "Pending"
+                      }}</span>
+                    </div>
+                    <div class="project-dropdown">
+                      <mat-icon class="">keyboard_arrow_down</mat-icon>
+                    </div>
+                  </div>
+                </div>
+              </button>
+              <mat-menu
+                #selectStatus="matMenu"
+                (closed)="onProjectMenuClosed()"
+              >
+                <button
+                  mat-menu-item
+                  *ngFor="let status of leaveRequestStatusOptions"
+                  (click)="selectLeaveRequestStatusValue(status)"
+                >
+                  {{ status }}
+                </button>
+              </mat-menu>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="serch_clearbtn">
+        <div class="buttons">
+          <div class="example-button-row">
+            <button
+            class="btn-color search-btn"
+            mat-fab
+            extended
+            color="primary"
+            (click)="onSearchClicked()"
+            >
+            <mat-icon>search</mat-icon>
+            Search
+          </button>
+          <div class="example-button-row">
+            <button
+            class="btn-color clear-btn"
+            mat-fab
+            extended
+            color="primary"
+            (click)="onClearClicked()"
+            >
+            <mat-icon>loop</mat-icon>
+            Clear
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    <div class="maintable">
+      <table class="kendo-table">
+        <thead>
+          <tr>
+            <th
+              *ngFor="let column of Columns"
+              [style.width.px]="column.width"
+              [style.backgroundColor]="'whitesmoke'"
+              (click)="sortTable(column.sortable ? column : null)"
+              [class.sortable-header]="column.sortable"
+              
+            >
+             
+             
+                {{ column.title }}
+                <mat-icon *ngIf="sortColumn === column.sortColumn" class="sort-icon">
+                  {{ sortOrder ? 'arrow_drop_up' : 'arrow_drop_down' }}
+                </mat-icon>
+            </th>
+          
+          </tr>
+        </thead>
+        <tbody *ngIf="totalRecords > 0; else noRecords">
+          
+            <tr *ngFor="let row of gridData">
+                <td *ngFor="let column of Columns">
+                  <ng-container *ngIf="column.field === 'leaveStartDate' || column.field === 'leaveEndDate' || column.field === 'returnDate'">
+                    {{ row[column.field] | date: 'yyyy-MM-dd' }}
+                  </ng-container>
+                  <ng-container *ngIf="column.field === 'approvedDate'">
+                    {{ row[column.field] ? (row[column.field] | date: 'yyyy-MM-dd') : '--' }}
+                  </ng-container>
+           
+                  <ng-container *ngIf="column.field === 'availibiltyInCity'">
+                    {{ row[column.field] ? 'Yes' : 'No' }}
+                  </ng-container> 
+                  <ng-container *ngIf="column.field === 'availibiltyOnPhone'">
+                    {{ row[column.field] ? 'Yes' : 'No' }}
+                  </ng-container>
+                  <ng-container *ngIf="column.field === 'action'">
+                    <div class="editanddelete">
+                    <mat-icon (click)="UpdateLeaveRequest(row.leaveRequestId,row.leaveRequestStatus)">schedule</mat-icon>
+                   
+                    <mat-icon class="icon red-icon" (click)="DeleteLeaveRequest(row.leaveRequestId)">block</mat-icon>
+                  </div>
+                  </ng-container>
+                  <ng-container *ngIf="column.field !== 'leaveStartDate' && column.field !== 'leaveEndDate' && column.field !== 'availibiltyOnPhone' && column.field !== 'returnDate' && column.field !== 'approvedDate' && column.field !== 'action'  && column.field !== 'availibiltyInCity'">
+                    {{ row[column.field] }}
+                  </ng-container>
+                </td>
+              </tr>
+              
+             
+        </tbody>
+        <ng-template #noRecords>
+          <tbody>
+            <tr>
+              <td [attr.colspan]="Columns.length">
+                No Records Found
+              </td>
+            </tr>
+          </tbody>
+        </ng-template>
+       
+
+      </table>
+      <mat-paginator #paginator
+      [length]="totalRecords"
+      [pageSizeOptions]="pageSizeOptions"
+      (page)="onPageChange($event)"
+      arial-label="select page"
+      *ngIf="totalRecords > 0">
+    
+      
+      <ng-template matPaginatorIntl let-paginator>
+        <div class="paginator">
+          <div class="total-records">{{ paginator.length }} Total Records</div>
+          <div class="paginator-controls">
+            <button (click)="paginator.previousPage()" mat-icon-button>
+              <mat-icon>keyboard_arrow_left</mat-icon> Previous
+            </button>
+            <div class="page-size">
+              <mat-select [(value)]="pageSize" (selectionChange)="onPageSizeChange($event)">
+                <mat-option *ngFor="let option of pageSizeOptions" [value]="option">{{ option }}</mat-option>
+              </mat-select>
+            </div>
+            <button (click)="paginator.nextPage()" mat-icon-button>
+               <mat-icon>keyboard_arrow_right</mat-icon>
+              
+            </button>
+          </div>
+        </div>
+      </ng-template>
+    
+    </mat-paginator>
+    
+    </div>
+  </div>
+</div>

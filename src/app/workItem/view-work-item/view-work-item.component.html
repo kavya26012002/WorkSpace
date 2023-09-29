@@ -1,0 +1,271 @@
+<div class="display_whole_content">
+  <div class="breadcrums_display">
+   <i class="navic ic18"></i>
+   <div class="breadcrum_content">
+    <span class="WorkSpace_breadcrum">My WorkSpace</span>
+    <span class="breadcrumb-separator">&gt;</span>
+    <a class="link_breadcrum">Work Items</a>
+  </div>
+  
+  </div>
+  
+  <div class="heading_table">
+    <div class="display_header">
+      {{ selectedItemName ? selectedItemName : "WorkItem" }}
+     </div>
+    <div *ngIf="showWorkLogSuccess" class="success-message">
+      <app-error-message [showSuccess]="showWorkLogSuccess" [successMessage]="workLogSuccessMessage"></app-error-message>
+    </div>
+    
+    <div class="table1">
+      <div class="searching">
+        <div class="content_searching">
+          <div class="content_searching1">
+            <div class="filter_heading">
+              <span class="filter_name">Project</span>
+            </div>
+            <div class="filter_dropdown">
+              <button
+                class="filter_dropdownclass"
+                mat-button
+                [matMenuTriggerFor]="selectProject"
+                #projectMenuTrigger="matMenuTrigger"
+              >
+                <div class="main_valign-centre">
+                  <div class="valign-centre-project">
+                    <div class="name-project">
+                      <span class="header-project-name">{{
+                        selectedProject || "All"
+                      }}</span>
+                    </div>
+                    <div class="project-dropdown">
+                      <mat-icon class="">keyboard_arrow_down</mat-icon>
+                    </div>
+                  </div>
+                </div>
+              </button>
+              <mat-menu
+                #selectProject="matMenu"
+                (closed)="onProjectMenuClosed()"
+              >
+                <button mat-menu-item (click)="selectProjectValue('All')">
+                  All
+                </button>
+                <button
+                  mat-menu-item
+                  *ngFor="let project of projects"
+                  (click)="selectProjectValue(project.projectName)"
+                >
+                  {{ project.projectName }}
+                </button>
+              </mat-menu>
+            </div>
+          </div>
+          <div class="content_searching2">
+            <div class="filter_heading">
+              <span class="filter_name">Project</span>
+            </div>
+            <div class="filter_dropdown">
+              <button
+                class="filter_dropdownclass"
+                mat-button
+                [matMenuTriggerFor]="selectProject"
+                #projectMenuTrigger="matMenuTrigger"
+              >
+                <div class="main_valign-centre">
+                  <div class="valign-centre-project">
+                    <div class="name-project">
+                      <span class="header-project-name">{{
+                        selectedProject || "All"
+                      }}</span>
+                    </div>
+                    <div class="project-dropdown">
+                      <mat-icon class="">keyboard_arrow_down</mat-icon>
+                    </div>
+                  </div>
+                </div>
+              </button>
+              <mat-menu
+                #selectProject="matMenu"
+                (closed)="onProjectMenuClosed()"
+              >
+                <button mat-menu-item (click)="selectProjectValue('All')">
+                  All
+                </button>
+                <button
+                  mat-menu-item
+                  *ngFor="let project of projects"
+                  (click)="selectProjectValue(project.projectName)"
+                >
+                  {{ project.projectName }}
+                </button>
+              </mat-menu>
+            </div>
+          </div>
+          <div class="content_searching3">
+            <div class="filter_heading">
+              <span class="filter_name">Project</span>
+            </div>
+            <div class="filter_dropdown">
+              <button
+                class="filter_dropdownclass"
+                mat-button
+                [matMenuTriggerFor]="selectProject"
+                #projectMenuTrigger="matMenuTrigger"
+              >
+                <div class="main_valign-centre">
+                  <div class="valign-centre-project">
+                    <div class="name-project">
+                      <span class="header-project-name">{{
+                        selectedProject || "All"
+                      }}</span>
+                    </div>
+                    <div class="project-dropdown">
+                      <mat-icon class="">keyboard_arrow_down</mat-icon>
+                    </div>
+                  </div>
+                </div>
+              </button>
+              <mat-menu
+                #selectProject="matMenu"
+                (closed)="onProjectMenuClosed()"
+              >
+                <button mat-menu-item (click)="selectProjectValue('All')">
+                  All
+                </button>
+                <button
+                  mat-menu-item
+                  *ngFor="let project of projects"
+                  (click)="selectProjectValue(project.projectName)"
+                >
+                  {{ project.projectName }}
+                </button>
+              </mat-menu>
+            </div>
+          </div>
+        </div>
+      </div>
+      <mat-divider></mat-divider>
+      <div class="serch_clearbtn">
+        <div class="buttons">
+          <div class="example-button-row">
+            <button
+              class="btn-color search-btn"
+              mat-fab
+              extended
+              color="primary"
+              (click)="filterGridData()"
+            >
+              <mat-icon>search</mat-icon>
+              Search
+            </button>
+            <div class="example-button-row">
+              <button
+                class="btn-color clear-btn"
+                mat-fab
+                extended
+                color="primary"
+                (click)="onClearClick()"
+              >
+                <mat-icon>loop</mat-icon>
+                Clear
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="maintable">
+      <table class="kendo-table">
+        <thead>
+          <tr>
+            <th
+              *ngFor="let column of columns"
+              [style.width.px]="column.width"
+              [style.backgroundColor]="'whitesmoke'"
+            >
+              {{ column.title }}
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <ng-container
+            *ngFor="let projectName of uniqueProjectNames; let i = index"
+          >
+            <ng-container
+              *ngIf="
+                selectedProject === null || selectedProject === projectName
+              "
+            >
+              <tr [style.backgroundColor]="'whitesmoke'">
+                <td [attr.colSpan]="columns.length" class="project-name">
+                  <span (click)="toggleContent(i)" class="toggle-arrow">
+                    {{ showContent[i] ? "▶" : "▼" }}
+                  </span>
+                  {{ projectName }}
+                </td>
+              </tr>
+              <ng-container *ngIf="!showContent[i]">
+                <ng-container
+                  *ngIf="
+                    getProjectItems(projectName).length === 0;
+                    else recordsFound
+                  "
+                >
+                  <tr>
+                    <td [attr.colSpan]="columns.length" class="no-records">
+                      No records found.
+                    </td>
+                  </tr>
+                </ng-container>
+                <ng-template #recordsFound>
+                  <tr *ngFor="let item of getProjectItems(projectName)">
+                    <td
+                      *ngFor="
+                        let column of columns;"
+                      [style.width.px]="column.width"
+                      [style.backgroundColor]="column.backgroundColor"
+                    >
+                    <ng-container *ngIf="column.field === 'startDate' || column.field === 'endDate'">
+                      {{ item[column.field] | date: 'yyyy-MM-dd' }}
+                    </ng-container>
+                    <div *ngIf="column.field === 'title'" [ngClass]="{'blue-text': column.field === 'title'}" (mouseenter)="onProjectTitleHover(item[column.field] || '') " (mouseleave)="onProjectTitleLeave()"  placement="top" theme="light" contentType='html'
+                    tooltip="<div class='status-tooltip'>
+                      <div class='status-title'>
+                        <img class='projecthover_title_img' src='\assets\task.png'>
+                        <span> {{ item[column.field] }}</span>
+                      </div>
+                    </div>"
+                    >
+                     
+
+                        <img class="project_title_img" src="\assets\task.png">
+                     
+                      {{ item[column.field] }}
+                    </div>
+                    <ng-container *ngIf="column.field !== 'startDate' && column.field !== 'endDate'  && column.field !== 'title'">
+                      {{ item[column.field] }}
+                    </ng-container>
+        
+                        <ng-container *ngIf="column.field === 'no'">
+
+                        <mat-icon (click)="AddWorkLog(item.title)">update</mat-icon>
+                      </ng-container>
+                    </td>
+                  </tr>
+                </ng-template>
+              </ng-container>
+              <tr *ngIf="!showContent[i]" [style.backgroundColor]="'whitesmoke'">
+                <td [attr.colSpan]="columns.length" class="project-name">
+                  Records: {{ getProjectItems(projectName).length }}
+                </td>
+              </tr>
+            </ng-container>
+          </ng-container>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+

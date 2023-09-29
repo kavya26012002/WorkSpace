@@ -1,0 +1,83 @@
+<div class="main-whole-page">
+    <div class="main-whole-div">
+        <div class="main-div">
+            <div class="carousel-container">
+                <div class="left-main-div">
+                    <img [src]="currentImage" [alt]="currentImageIndex" class="login-images" />
+                    <div class="carousel-controls">
+                        <button class="carousel-button" mat-icon-button (click)="prevImage()">
+                            <mat-icon class="carousel-left-button">keyboard_arrow_left</mat-icon>
+                        </button>
+                        <button class="carousel-button" mat-icon-button (click)="nextImage()">
+                            <mat-icon class="carousel-left-button">keyboard_arrow_right</mat-icon>
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- <div class="left-main-div">
+                <img class="login-images" src="/assets/login-img1.jpg" />
+            </div> -->
+            <div class="right-main-div">
+                <div class="right-sub-div">
+                    <div class="right-main-logo">
+                        <img src="/assets/workspace-black.png">
+                    </div>
+                    <div class="right-login-div">
+                        <div class="login-title">
+                            <div class="heading">Login to your account</div>
+                            <form [formGroup]="userLoginForm" (submit)="loginUser()">
+                                <div class="login-content-main">
+                                    <div class="content">
+
+                                        <mat-form-field appearance="outline" class="custom-form-field">
+                                            <mat-label class="plceholdername">Enter your name</mat-label>
+                                            <input matInput placeholder="Placeholder" formControlName="username">
+
+                                            <mat-icon class="placeholericon" matPrefix>perm_identity</mat-icon>
+
+                                            <mat-error class="user-login-errors"
+                                                *ngIf="userLoginForm.controls['username'].errors && userLoginForm.controls['username'].hasError('required')">
+                                                *Name Is Required Field
+                                            </mat-error>
+
+                                            <!-- <mat-icon class="username-icon" matPrefix>perm_identity</mat-icon> -->
+
+                                        </mat-form-field>
+
+                                        <div>
+                                            <mat-form-field appearance="outline" class="custom-form-field">
+                                                <mat-label class="plceholdername">Enter Password</mat-label>
+                                                <input matInput placeholder="Placeholder" formControlName="password">
+                                                <mat-icon class="placeholericon" matPrefix>lock</mat-icon>
+                                                <mat-error class="user-login-errors"
+                                                    *ngIf="userLoginForm.controls['password'].errors && userLoginForm.controls['password'].hasError('required')">
+                                                    *Password Is Required Field
+                                                </mat-error>
+
+                                            </mat-form-field>
+                                        </div>
+                                    </div>
+                                    <div class="login-down-content">
+                                        <mat-checkbox><span class="signedin">Keep me signed in</span></mat-checkbox>
+                                        <div class="forgot-div">
+                                            <a class="forgot-link">Forgot Password?</a>
+                                        </div>
+
+                                    </div>
+                                    <div class="login-button-div">
+                                        <button [disabled]="userLoginForm.invalid" class="login-button" mat-flat-button
+                                            color="primary">Login</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>

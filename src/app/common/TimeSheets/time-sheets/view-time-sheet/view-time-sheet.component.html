@@ -1,0 +1,216 @@
+<div class="display_whole_content">
+  <div class="breadcrums_display">
+       <i class="navic ic18"></i>
+    <div class="breadcrum_content">
+      <span class="WorkSpace_breadcrum">My WorkSpace</span>
+      <span class="breadcrumb-separator">&gt;</span>
+      <a class="link_breadcrum">TimeSheets</a>
+
+
+</div>
+  </div>
+  <div class="heading_table">
+    <div class="display_header">
+      {{ selectedItemName ? selectedItemName : "My TimeSheets" }}
+    </div>
+  </div>
+  <div class="timesheet_main">
+
+  
+  <div class="middle-section">
+    <div class="flex-between">
+      <span class="FullLeaveBox ColorBox">&nbsp;</span>
+      <span style="margin-top: 2px">Full Leave&nbsp;</span>
+    </div>
+    <div class="flex-between">
+      <span class="HalfLeaveBox ColorBox">&nbsp;</span>
+      <span style="margin-top: 2px">Half Leave&nbsp;</span>
+    </div>
+    <div class="flex-between">
+      <span class="CurrentDateBox ColorBox">&nbsp;</span>
+      <span style="margin-top: 2px">Today's Date&nbsp;</span>
+    </div>
+    <div class="flex-between">
+      <span class="WeekendBox ColorBox">&nbsp;</span>
+      <span style="margin-top: 2px">Weekend&nbsp;</span>
+    </div>
+    <div class="flex-between">
+      <span class="HolidayBox ColorBox">&nbsp;</span>
+      <span style="margin-top: 2px">Public Holiday&nbsp;</span>
+    </div>
+  </div>
+  <div class="main_timesheet_whole_content">
+    <div class="month-selection">
+      <div class="center">
+        <mat-icon (click)="prevMonth()" class="month_icon"
+          >keyboard_arrow_left</mat-icon
+        >
+
+        <span class="month_selector_name">{{
+          currentMonth | date : "MMMM - yyyy"
+        }}</span>
+
+        <mat-icon (click)="nextMonth()" class="month_icon"
+          >keyboard_arrow_right</mat-icon
+        >
+      </div>
+    </div>
+
+    <table >
+      <thead class="timesheet_head">
+        <tr>
+         
+          <th class="work-item-header">Work Items</th>
+          <th class="Pmain-header">P</th>
+          <th class="Sigmamain-header">&#931;</th>
+         <div class="date_table">
+            <div *ngFor="let item of generateTableData()" [ngStyle]="{'border-right': isSaturday(item.value) ? '1px solid black' : 'none'}">
+             
+                <td class="worklog-value">
+                <div class="date_value">
+                  {{ item.value }}
+                 
+                </div>
+                <div class="date_value">
+                  {{ item.name }}
+                </div>
+              </td>
+            </div>
+          </div>
+        </tr>
+      </thead>
+      <tbody  *ngIf="uniqueProjectNames[0] != ''">
+        <ng-container
+          *ngFor="let projectName of uniqueProjectNames; let i = index"
+        >
+          <ng-container
+            *ngIf="uniqueProjectNames == null || uniqueProjectNames.length > 0"
+          >
+            <tr class="project_name_div">
+              <td class="project-name">
+                <span (click)="toggleContent(i)" class="toggle-arrow">
+                  {{ showContent[i] ? "▶" : "▼" }}
+                
+                </span>
+                {{ projectName }}  
+              </td>
+              <td class="P-header">0</td>
+
+              <td class="Sigma-header">{{ calculateTotalWorkLog(projectName) }}</td>
+              <div class="date_table">
+                <div *ngFor="let data of generateTableData(); let j = index" [ngStyle]="{ 'background-color': isToday(data.value) ? '#D1E4F8' : isHalfDay(data.value) ? '#ffe2b8' : isFullDay(data.value) ? '#DAEBBA': ispublicHoliday(data.value) ? 'rgba(85, 100, 208,0.2)' : isWeekend(data.value) ? 'rgb(245, 245, 245)' : 'transparent', 'width': '35px','border-right': isSaturday(data.value) ? '1px solid black' : 'none'}">
+
+                    <td class="worklog-value">
+                    <div class="date_value">
+                      {{''}}
+                    </div>
+                  </td>
+                </div>
+              </div>
+        
+            </tr>
+            <tr *ngFor="let item of getProjectItems(projectName);" class="content_projectwise">
+              <ng-container *ngIf="!showContent[i]">
+                
+                <td class="workproject-item-header">
+                  <img class="project_title_img" src="\assets\task.png">
+                  <a (mouseenter)="onProjectTitleHover(item.projectTitle || '')" (mouseleave)="onProjectTitleLeave()" 
+                 (click)="ViewPbWorkItem(item.projectTitle)"
+                  class="blue-text"
+                  placement="top" theme="light" contentType='html'
+                  tooltip="<div class='status-tooltip'>
+                    <div class='status-title'>
+                      <img class='projecthover_title_img' src='\assets\task.png'>
+                      <span>{{tooltipResponseData.title}}</span>
+                    </div>
+                    <div><label>OriginalEstimate: {{tooltipResponseData.originalEstimate}}</label> </div>
+                    <div><label>Remaining:  {{tooltipResponseData.remaining}}</label> </div>
+                    <div><label>Spent Time:  {{tooltipResponseData.spentTime}}</label> </div>
+                  <div><label>StartDate: {{tooltipResponseData.startDate}}</label> </div>
+                  <div><label>EndDate:  {{tooltipResponseData.endDate}}</label> </div>
+                    </div>">
+                    {{ item.projectTitle }}
+                  </a>
+                </td>
+            
+              <td class="Pproject-header">{{ item.p }}</td>
+              <td class="Sigmaproject-header">{{ item.totalWorkLog }}</td>
+              <div class="date_table">
+                <div *ngFor="let data of generateTableData(); let j = index" [ngStyle]="{ 'background-color': isToday(data.value) ? '#D1E4F8' : isHalfDay(data.value) ? '#ffe2b8' : isFullDay(data.value) ? '#DAEBBA': ispublicHoliday(data.value) ? 'rgba(85, 100, 208,0.2)' : isWeekend(data.value) ? 'rgb(245, 245, 245)' : 'transparent', 'width': '35px','border-right': isSaturday(data.value) ? '1px solid black' : 'none'}">
+                    <td class="worklog-value">
+                    <div class="date_value1">
+                        {{ getValueForDate(data.value, item.projectTitle ?? '')}}
+                    </div>
+                  </td>
+                </div>
+              </div>
+              </ng-container>
+            </tr>
+           
+          </ng-container>
+        </ng-container>
+        <tr class="bottom_timesheetvalue" >
+          <td class="dailyworklog">Daily Work Log Hours</td>
+          <td class="P-header">{{''}}</td>
+
+              <td class="Sigma-header">{{ '' }}</td>
+              <div class="date_table">
+                <div *ngFor="let data of generateTableData(); let j = index" [ngStyle]="{'border-right': isSaturday(data.value) ? '1px solid black' : 'none'}">
+
+                    <td class="worklog-value">
+                    <div class="date_value">
+                      {{ generateDailyWorkLog(data.value)  }}
+                    </div>
+                  </td>
+                </div>
+              </div>
+         
+        </tr>
+        <tr class="bottom_timesheetvalue" >
+          <td class="dailyworklog">Daily Time Log Hours</td>
+          <td class="P-header">{{''}}</td>
+
+              <td class="Sigma-header">{{ '' }}</td>
+              <div class="date_table">
+                <div *ngFor="let data of generateTableData(); let j = index" [ngStyle]="{'border-right': isSaturday(data.value) ? '1px solid black' : 'none'}">
+
+                    <td class="worklog-value">
+                    <div class="date_value">
+                     
+                      {{ generateDailyTimeLog(data.value)  }}
+                    </div>
+                  </td>
+                </div>
+              </div>
+         
+        </tr>
+        <tr class="bottom_timesheetvalue" >
+          <td class="dailyworklog">Weekly Hours Total</td>
+          <td class="P-header">{{''}}</td>
+
+              <td class="Sigma-header">{{ '' }}</td>
+              <div class="date_table">
+                <div *ngFor="let data of generateTableData(); let j = index" [ngStyle]="{'border-right': isSaturday(data.value) ? '1px solid black' : 'none'}">
+
+                    <td class="worklog-value">
+                    <div *ngIf="!isSaturday(data.value)" class="date_value">
+                      {{''}}
+                     
+                    </div>
+                    <div *ngIf="isSaturday(data.value)" class="date_value">
+                      {{getWeekendWork(data.value)}}
+                    
+                    </div>
+                  </td>
+                </div>
+              </div>
+         
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+</div>
+
+
+

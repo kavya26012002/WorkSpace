@@ -1,0 +1,203 @@
+.ic18 {
+    background-position: -18px -144px !important;
+}
+
+.breadcrums_display
+{
+    font-size: 13px;
+    padding-top: 11px;
+    display: flex;
+}
+.WorkSpace_breadcrum
+{
+   font-size: 13px;
+   color: rgb(51,51,51);
+   font-family: "Segoe UI",arial,tahoma;
+   font-weight: 400; 
+   font-style: normal;
+   white-space: nowrap;
+   text-align: left;
+}
+.breadcrum_content {
+    display: flex; 
+    align-items: center; 
+  }
+  
+  .WorkSpace_breadcrum {
+    margin-right: 5px; 
+  }
+  
+  .breadcrumb-separator {
+    padding: 0 5px;
+        font-size: 17px;
+  }
+  .link_breadcrum {
+    color: #999999;
+    text-decoration: none;
+    font-size: 13px;
+    font-family: "Segoe UI",arial,tahoma;
+    font-weight: 400; 
+    font-style: normal;
+    white-space: nowrap;
+    text-align: left;
+    cursor: pointer;
+
+
+}
+  
+.navic {
+    background: url(src\assets\ic-leftnav.png) 0px 0px no-repeat;
+    width: 18px;
+    height: 18px;
+    display: inline-block;
+    margin-right: 6px;
+    vertical-align: -4px;
+}
+.attendance-container {
+    padding: 20px;
+}
+
+.attendancefilter {
+    border: 1px solid #ddd;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.attendancefilter>mat-form-field {
+    width: 30%;
+    min-width: 250px;
+    padding: 10px;
+}
+
+.attendancefilter-actions {
+    background: #f9f9f9;
+    padding: 7px;
+    border: 1px solid #ccc;
+    text-align: right;
+}
+
+.attendance-calender {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+}
+
+.attendance-calender>div {
+    min-width: 30px;
+}
+
+.ColorBox {
+    display: inline-block;
+    height: 15px;
+    width: 15px;
+}
+
+.FullLeaveBox {
+    background-color: #DAEBBA;
+    border: 1px solid #00612E;
+    color: #00612E;
+    padding: 0 0 2px 2px;
+}
+
+.HalfLeaveBox {
+    background-color: #FFE2B7;
+    border: 1px solid #00612E;
+    color: #00612E;
+    padding: 0 0 2px 2px;
+}
+
+.CurrentDate {
+    border: 3px solid #D1E4F8 !important;
+}
+
+.WeekendBox {
+    background-color: #F5F5F5;
+    border: 1px solid #00612E;
+    color: #00612E;
+    padding: 0 0 2px 2px;
+}
+
+.HolidayBox {
+    background-color: rgb(85, 100, 208);
+    opacity: 0.3;
+    border: 1px solid #00612E;
+    color: #00612E;
+    padding: 0 0 2px 2px;
+}
+
+.attendance-result {
+    display: flex;
+    flex-direction: column;
+    padding: 15px 0;
+}
+
+.attendance-calender-title {
+    background: #e6e6e6;
+    color: #333;
+    font-size: 16px;
+    margin: 0;
+    padding: 10px 12px 10px 12px;
+    font-variant-caps: normal;
+    text-align: center;
+}
+
+.attendance-calender-title .totalAttendance {
+    float: right;
+    font-weight: 700;
+}
+
+.attendance-btn {
+    height: 35px;
+    width: 100%;
+    border-radius: 0;
+    padding: 0 !important;
+    font-size: 15px;
+    font-weight: 650;
+    line-height: 1.5;
+}
+
+.attendance-btn:focus,
+.attendance-btn:hover {
+    color: inherit;
+}
+
+.attendance-btn.higlight {
+    border: 3px solid #D1E4F8;
+}
+
+.attendance-btn.disabled {
+    border: none !important;
+}
+
+.attendance-btn:active {
+    border: none !important;
+}
+
+.attendance-calender .day-S {
+    background-color: rgb(245, 245, 245, 0.8) !important;
+}
+
+.attendance-calender .colorApproved.color-1 .attendance-btn {
+    color: #0dbf53 !important;
+}
+
+.attendance-calender .colorApproved.color-2 .attendance-btn {
+    color: red !important;
+}
+
+.attendance-calender .colorApproved.color-3 .attendance-btn {
+    color: #ff9800 !important;
+}
+
+.holidayColor {
+    background-color: #5564d033 !important;
+}
+
+.attendance-submitted-message {
+    color: red;
+    font-weight: 600;
+}

@@ -1,0 +1,334 @@
+<div class="display_whole_content">
+  <div class="breadcrums_display">
+    <i class="navic ic18"></i>
+    <div class="breadcrum_content">
+      <span class="WorkSpace_breadcrum">My WorkSpace</span>
+      <span class="breadcrumb-separator">&gt;</span>
+      <a class="link_breadcrum" routerLink="/leave-request/view-leaveRequest"
+        >Leave Requests</a
+      >
+    </div>
+  </div>
+  <div class="heading_table">
+    <div class="display_header">
+      {{ selectedItemName ? selectedItemName : "Manage WorkItems" }}
+    </div>
+  </div>
+  <form [formGroup]="manageWorkItemForm">
+    <div *ngIf="showmanageWorkItemError" class="success-message">
+      <app-error-message
+        [showError]="showmanageWorkItemError"
+        [errorMessage]="manageWorkItemErrorMessage"
+      ></app-error-message>
+    </div>
+    <div *ngIf="showmanageWorkItemSuccess" class="success-message">
+      <app-error-message
+        [showSuccess]="showmanageWorkItemSuccess"
+        [successMessage]="manageWorkItemSuccessMessage"
+      ></app-error-message>
+    </div>
+    <div class="main_manageworkItem_div">
+        <div class="main_content">
+            <mat-dialog-content class="mat_dialog_content">
+                <div class="form_field_one">
+                    <div class="flex-container">
+                      <div class="label-container">
+                        <label class="content_title">Title:</label>
+                      </div>
+                      <div class="main_content">
+                        <mat-form-field appearance="outline" class="full-width">
+                          <input matInput placeholder=""  [formControlName]="'title'" />
+                        </mat-form-field>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form_field_one">
+                    <div class="flex-container_two">
+                        <div class="label-container-left">
+                            <div class="label_container_leftside_left">
+                                <label class="content_title_two">WorkGroup:
+
+                                </label>
+                            </div>
+                            <div class="label_container_leftside_right">
+                                <mat-form-field appearance="outline" class="full-width" >
+                                    <input matInput placeholder=""  readonly [formControlName]="'workGroup'" />
+                                  </mat-form-field>
+                            </div>
+                            
+                        </div>
+
+                        <div class="label-container-right">
+                            <div class="label_container_rightside_left">
+                                <label class="content_title_two">Work Flow Type:
+
+                                </label>
+                            </div>
+                            <div class="label_container_rightside_right">
+                                <mat-form-field appearance="outline" class="full-width">
+                                  
+                                    <mat-select  [(value)]="defaultWorkFlowType">
+                                        <mat-option *ngFor="let option of WorkFLowTypeOption" [value]="option.value">
+                                            {{ option.name }}
+                                        </mat-option>
+                                    </mat-select>
+                                    
+                                  </mat-form-field>
+
+                                 
+                            </div>
+                            
+                        </div>
+                    </div>
+                  </div>
+
+                  <div class="form_field_one">
+                    <div class="flex-container_two">
+                        <div class="label-container-left">
+                            <div class="label_container_leftside_left">
+                                <label class="content_title_two">Priority:
+
+                                </label>
+                            </div>
+                            <div class="label_container_leftside_right">
+                                <mat-form-field appearance="outline" class="full-width">
+                                  
+                                    <mat-select [formControlName]="'priority'">
+                                        <mat-option
+                                          *ngFor="let option of priorityOptions"
+                                          [value]="option"
+                                        >
+                                          {{ option }}
+                                        </mat-option>
+                                      </mat-select>
+                                  </mat-form-field>
+                            </div>
+                            
+                        </div>
+
+                        <div class="label-container-right">
+                            <div class="label_container_rightside_left">
+                                <label class="content_title_two">Status:
+
+                                </label>
+                            </div>
+                            <div class="label_container_rightside_right">
+                                <mat-form-field appearance="outline" class="full-width">
+                                      
+                                    <mat-select [(value)]="defaultStatus">
+                                        <mat-option *ngFor="let option of statusOptions" [value]="option.value">
+                                            {{ option.name }}
+                                        </mat-option>
+                                      </mat-select>
+                                  </mat-form-field>
+                            </div>
+                            
+                        </div>
+                    </div>
+                  </div>
+
+                  <div class="form_field_one">
+                    <div class="flex-container_two">
+                        <div class="label-container-left">
+                            <div class="label_container_leftside_left">
+                                <label class="content_title_two">StartDate:
+
+                                </label>
+                            </div>
+                            <div class="label_container_leftside_right">
+                                <mat-form-field appearance="outline" class="date-picker">
+                                    <input matInput [matDatepicker]="pickerStartDate" placeholder="Choose a date" [formControlName]="'startDate'" (dateChange)="dateComparision()">
+                                    <mat-datepicker-toggle matSuffix [for]="pickerStartDate"></mat-datepicker-toggle>
+                                    <mat-datepicker #pickerStartDate></mat-datepicker>
+                                  </mat-form-field>
+                            </div>
+                            
+                        </div>
+
+                        <div class="label-container-right">
+                            <div class="label_container_rightside_left">
+                                <label class="content_title_two">EndDate:
+
+                                </label>
+                            </div>
+                            <div class="label_container_rightside_right">
+                                <mat-form-field appearance="outline" class="date-picker">
+                                    <input matInput [matDatepicker]="pickerEndDate" placeholder="Choose a date" [formControlName]="'endDate'" (dateChange)="dateComparision()">
+                                    <mat-datepicker-toggle matSuffix [for]="pickerEndDate"></mat-datepicker-toggle>
+                                    <mat-datepicker #pickerEndDate></mat-datepicker>
+                                  </mat-form-field>
+                            </div>
+                            
+                        </div>
+                    </div>
+                  </div>
+
+                  <div class="form_field_one">
+                    <div class="flex-container_two">
+                        <div class="label-container-left">
+                            <div class="label_container_leftside_left">
+                                <label class="content_title_two">OriginalEst:</label>
+                            </div>
+                            <div class="label_container_leftside_right">
+                                <mat-form-field appearance="outline" class="full-width">
+                                    <input matInput placeholder=""  [formControlName]="'originalEst'"/>
+                                  </mat-form-field>
+
+                            </div>
+                            
+                        </div>
+
+                        <div class="label-container-right">
+                            <div class="label_container_rightside_left">
+                                <label class="content_title_two">Assigned To:
+
+                                </label>
+                            </div>
+                            <div class="label_container_rightside_right">
+                                <mat-form-field appearance="outline" class="full-width">
+                                    <input matInput placeholder="" readonly [formControlName]="'assignedTo'" />
+                                  </mat-form-field>
+                            </div>
+                            
+                        </div>
+                    </div>
+                  </div>
+
+                  <div class="form_field_one">
+                    <div class="flex-container_two">
+                        <div class="label-container-left">
+                            <div class="label_container_leftside_left">
+                                <label class="content_title_two">Remaining Est:</label>
+                            </div>
+                            <div class="label_container_leftside_right">
+                                <mat-form-field appearance="outline" class="full-width">
+                                    <input matInput placeholder="" [formControlName]="'remainingEst'" />
+                                  </mat-form-field>
+
+                            </div>
+                            
+                        </div>
+
+                        <div class="label-container-right">
+                            <div class="label_container_rightside_left">
+                                <label class="content_title_two">Reported By:
+
+                                </label>
+                            </div>
+                            <div class="label_container_rightside_right">
+                                <mat-form-field appearance="outline" class="full-width">
+                                  
+                                    <mat-select [(value)]="defaultReportedBy">
+                                        <mat-option *ngFor="let person of getManageWorkItemReportingByList" [value]="person.employeeId">
+                                            {{ person.reposrtingPersonName }}
+                                        </mat-option>
+
+                                    </mat-select>
+                                  </mat-form-field>
+                            </div>
+                            
+                        </div>
+                    </div>
+                  </div>
+
+                  <div class="form_field_one">
+                    <div class="flex-container_two">
+                        <div class="label-container-left">
+                            <div class="label_container_leftside_left">
+                                <label class="content_title_two">SubProject:</label>
+                            </div>
+                            <div class="label_container_leftside_right">
+                                <mat-form-field appearance="outline" class="full-width">
+                                  
+                                    <mat-select [(value)]="defaultSubProject">
+                                        <mat-option *ngFor="let person of getManageWorkItemSubProjectList" [value]="person.subProjectId">
+                                            {{ person.subProjectList }}
+                                        </mat-option>
+
+                                    </mat-select>
+                                  </mat-form-field>
+
+                            </div>
+                            
+                        </div>
+
+                        <div class="label-container-right">
+                            <div class="label_container_rightside_left">
+                                <label class="content_title_two">Released To Production:
+
+                                </label>
+                            </div>
+                            <div class="label_container_rightside_right">
+                                <div class="last_div">
+                               <div class="release_to_prod">
+                              
+                                <mat-checkbox class="example-margin" [formControlName]="'releasedToProduction'"></mat-checkbox>
+                                </div>
+                                <div class="rsi">
+                                    <div class="label_container_rsi_left">
+                                        <label class="content_title_rsi">RSI:
+        
+                                        </label>
+                                    </div>
+                                    <div class="label_container_rsi_right">
+                                        <mat-form-field appearance="outline" class="full-width">
+                                            <input matInput placeholder="" [formControlName]="'rsi'" />
+                                          </mat-form-field>
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                  </div>
+
+                  <div class="form_field_one">
+                    <div class="flex-container">
+                      <div class="label-container">
+                        <label class="content_title">Description:</label>
+                      </div>
+                      <div class="main_content">
+                        <ckeditor #editor [editor]="Editor"  [formControlName]="'description'"></ckeditor>
+                      
+                      </div>
+                    </div>
+                  </div>
+
+                
+                </mat-dialog-content>
+           
+
+        </div>
+
+       
+        <div class="footer">
+            <button
+            class="save-btn"
+            type="submit"
+            mat-raised-button
+            color="primary"
+            [class.red-button]="!isEndDateValid"
+            (click)="UpdateWorkItem(this.projectWorkId)"
+           
+           
+
+          >
+            <mat-icon>print</mat-icon>
+            Save
+          </button>
+          <button
+            class="close-btn"
+            mat-raised-button
+            color="primary"
+            [mat-dialog-close]="false"
+            (click)="CancelManageWorkItem(this.projectWorkId)"
+           
+          >
+            <mat-icon>cancel</mat-icon>Close
+          </button>
+        </div>
+
+    </div>
+  </form>
+</div>

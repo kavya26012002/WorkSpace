@@ -1,0 +1,23 @@
+<!--  -->
+<ng-container>
+  <app-header (toggleSidebarForMe)="sideBarToggler()" *ngIf="isLogin()"></app-header>
+  </ng-container>
+  <mat-drawer-container class="example-container" style="height: 100%; overflow-y:auto;margin-top: -12px;">
+    <mat-drawer mode="side" [opened]="sideBarOpen" *ngIf="isLogin()">
+      <ng-container >
+        <app-sidebar></app-sidebar>
+    </ng-container>
+    </mat-drawer>
+    <mat-drawer-content class="main-content">
+      <!-- <div [ngClass]="{'logincontent': isLogin()}"> -->
+        <div [ngClass]="isLogin() ? 'content' : 'logincontent' ">
+        <router-outlet></router-outlet>
+      </div>
+    </mat-drawer-content>
+    
+  </mat-drawer-container>
+  <ng-container>
+    <app-footer *ngIf="isLogin()"></app-footer> 
+  </ng-container>
+
+  <!-- class="content mat-elevation-z2" -->

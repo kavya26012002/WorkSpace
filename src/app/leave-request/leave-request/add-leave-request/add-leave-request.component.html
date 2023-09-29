@@ -1,0 +1,279 @@
+<div class="display_whole_content">
+  <div class="breadcrums_display">
+    <i class="navic ic18"></i>
+ <div class="breadcrum_content">
+   <span class="WorkSpace_breadcrum">My WorkSpace</span>
+   <span class="breadcrumb-separator">&gt;</span>
+   <a class="link_breadcrum" routerLink="/leave-request/view-leaveRequest">Leave Requests</a>
+</div>
+</div>    
+ <div class="heading_table">
+      <div class="display_header">
+        {{ selectedItemName ? selectedItemName : "Add LeaveRequest" }}
+        
+      </div>
+
+
+<form [formGroup]="addLeaveRequestForm">
+  <div>
+    <app-error-message [showError]="showLeaveRequestError" [errorMessage]="leaveRequetErrorMessage"></app-error-message>
+    <app-error-message [showSuccess]="showLeaveRequestSuccess" [successMessage]="leaveRequestSuccessMessage"></app-error-message>
+
+</div>
+    <div class="main_div_add_request">
+      <div class="addrequestcontent">
+        <mat-dialog-content class="mat_dialog_content">
+          <div class="form_field_one">
+            <div class="flex-container">
+              <div class="label-container">
+                <label class="content_title">Name:</label>
+              </div>
+              <div class="content">
+                <mat-form-field appearance="fill" class="full-width">
+                  <input matInput placeholder="" readonly [formControlName]="'employeeName'" />
+                </mat-form-field>
+              </div>
+            </div>
+          </div>
+          <div class="form_field_one">
+            <div class="flex-container">
+              <div class="label-container">
+                <label class="content_title">Send Request To:</label>
+              </div>
+              <div class="content">
+                <mat-form-field appearance="fill" class="full-width">
+                  <input matInput placeholder="" readonly [formControlName]="'reportingPersonName'" />
+                </mat-form-field>
+              </div>
+            </div>
+          </div>
+          <div class="form_field_one">
+            <div class="flex-container">
+              <div class="label-container">
+                <label class="content_title">Reason For Leave:</label>
+              </div>
+              <div class="content">
+                <mat-form-field appearance="outline" class="full-width">
+                    <mat-label></mat-label>
+                    <textarea matInput [formControlName]="'reasonForLeave'"  ></textarea>
+                  </mat-form-field>
+              </div>
+            </div>
+          </div>
+          <div class="form_field_one">
+            <div class="flex-container">
+                <div class="label-container">
+                    <label class="content_title">Leave Start Date:</label>
+                  </div>
+                  <div class="WorkDonecontent">
+                    <div class="left_content">
+                      
+                          <mat-form-field appearance="outline" class="date-picker">
+                            <mat-label>Leave Start Date:</mat-label>
+                            <input matInput [matDatepicker]="pickerStartDate" placeholder="Choose a date" [formControlName]="'leaveStartDate'" (dateChange)="calculateDurationAndReturnDate()">
+                            <mat-datepicker-toggle matSuffix [for]="pickerStartDate"></mat-datepicker-toggle>
+                            <mat-datepicker #pickerStartDate></mat-datepicker>
+                          </mat-form-field>
+                    </div>
+                    <div class="right_content">
+                        <mat-form-field appearance="outline" class="dropdown">
+                          <mat-label>Leave Start Date:</mat-label>
+                          <mat-select [formControlName]="'startDateAttendanceOption'" (selectionChange)="getStartDateOption($event,'start')">
+                            <mat-option *ngFor="let option of leaveAttendanceOptions" [value]="option.value">
+                              {{ option.name }}
+                            </mat-option>
+                          </mat-select>
+                        </mat-form-field>
+                        
+                      </div>
+            </div>
+          </div>
+          </div>
+          <div class="form_field_one">
+            <div class="flex-container">
+                <div class="label-container">
+                    <label class="content_title">Leave End Date:</label>
+                  </div>
+                  <div class="WorkDonecontent">
+                    <div class="left_content">
+                        <mat-form-field appearance="outline" class="date-picker">
+                            <mat-label>Leave End Date:</mat-label>
+                            <input matInput [matDatepicker]="pickerEndDate" placeholder="Choose a date" [formControlName]="'leaveEndDate'" (dateChange)="calculateDurationAndReturnDate()">
+                            <mat-datepicker-toggle matSuffix [for]="pickerEndDate"></mat-datepicker-toggle>
+                            <mat-datepicker #pickerEndDate></mat-datepicker>
+                          </mat-form-field>
+                    </div>
+                    <div class="right_content">
+                        <mat-form-field appearance="outline" class="dropdown">
+                          <mat-label>Leave End Date:</mat-label>
+                          <mat-select [formControlName]="'endDateAttendanceOption'"  (selectionChange)="getStartDateOption($event, 'end')">
+                            <mat-option *ngFor="let option of leaveAttendanceOptions" [value]="option.value">
+                              {{ option.name }}
+                            </mat-option>
+                          </mat-select>
+                        </mat-form-field>
+                      </div>
+            </div>
+          </div>
+          </div>
+          <div class="form_field_one">
+            <div class="flex-container">
+            
+              <div class="label-container">
+                <label class="content_title">Duration For Leave:</label>
+              </div>
+              <div class="content">
+                <mat-form-field appearance="fill" class="full-width">
+                  <input matInput placeholder="" formControlName="duartion" />
+                </mat-form-field>
+              </div>
+            </div>
+          </div>
+          <div class="form_field_one">
+          
+            <div class="flex-container">
+                <div class="label-container">
+                  <label class="content_title">Return Date:</label>
+                </div>
+                <div class="content">
+                  <mat-form-field appearance="fill" class="full-width">
+                    <input matInput placeholder="" formControlName="returnDate" />
+                  </mat-form-field>
+                </div>
+              </div>
+          </div>
+         
+          <div class="form_field_one">
+            <div class="flex-container">
+              <div class="label-container">
+                <label class="content_title">Requested Date:</label>
+              </div>
+              <div class="content">
+                <mat-form-field appearance="fill" class="full-width">
+                  <input matInput placeholder="" readonly [formControlName]="'requestedDate'" />
+                </mat-form-field>
+              </div>
+            </div>
+          </div>
+          <div class="form_field_one">
+            <div class="flex-container">
+              <div class="label-container">
+                <label class="content_title">Is Adhoc Leave:</label>
+              </div>
+              <div class="content">
+                <mat-checkbox class="example-margin" (change)="toggleAdhocLeave()"></mat-checkbox>
+              </div>
+            </div>
+          </div>
+          <div class="form_field_one" *ngIf="isAdhocLeaveVisible">
+            <div class="flex-container">
+              <div class="label-container">
+                <label class="content_title">Adhoc Leave Status:</label>
+              </div>
+              <div class="content">
+                <mat-form-field appearance="outline" class="dropdownclass">
+                    <mat-label>Adhoc Option:</mat-label>
+                    <mat-select [formControlName]="'adhocLeaveStatus'">
+                      <mat-option *ngFor="let option of dropdownAdhocOptions" [value]="option.value" >
+                        {{option.name}}
+                      </mat-option>
+                     
+                    
+                    </mat-select>
+                  </mat-form-field>
+              </div>
+            </div>
+          </div>
+          <div class="form_field_one">
+            <div class="flex-container">
+              <div class="label-container">
+                <label class="content_title">Phone:</label>
+              </div>
+              <div class="content">
+                <mat-form-field appearance="fill" class="full-width">
+                    <input matInput placeholder="" readonly [formControlName]="'phoneNumber'" />
+                  </mat-form-field>
+              </div>
+            </div>
+          </div>
+          <div class="form_field_one">
+            <div class="flex-container">
+              <div class="label-container">
+                <label class="content_title">Availibility On Phone:</label>
+              </div>
+              <div class="content">
+                <mat-form-field appearance="outline" class="dropdownclass">
+                    <mat-label>Availibity On Phone:</mat-label>
+                    <mat-select [formControlName]="'availibilityOnPhone'">
+                      <mat-option *ngFor="let option of AvailibiltyOptions" [value]="option.value">
+                        {{ option.name }}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                  
+              </div>
+            </div>
+          </div>
+          <div class="form_field_one">
+            <div class="flex-container">
+              <div class="label-container">
+                <label class="content_title">Availibilty In Ahmedabad:</label>
+              </div>
+              <div class="content">
+                <mat-form-field appearance="outline" class="dropdownclass">
+                    <mat-label>Availibility In City</mat-label>
+                    <mat-select [formControlName]="'availibilityInCity'">
+                      <mat-option *ngFor="let option of AvailibiltyOptions" [value]="option.value">
+                        {{ option.name}}
+                      </mat-option>
+                     
+                    
+                    </mat-select>
+                  </mat-form-field>
+              </div>
+            </div>
+          </div>
+          <div class="form_field_one">
+            <div class="flex-container">
+              <div class="label-container">
+                <label class="content_title">Alternate Contact Number:</label>
+              </div>
+              <div class="content">
+                <mat-form-field appearance="fill" class="full-width">
+                  <input matInput placeholder=""  [formControlName]="'alternatePhoneNumber'" />
+                </mat-form-field>
+              </div>
+            </div>
+          </div>
+          <mat-divider class="divider"></mat-divider>
+
+        <div class="footer">
+          <button
+            class="save-btn"
+            type="submit"
+            mat-raised-button
+            color="primary"
+            [class.red-button]="!isEndDateValid"
+            (click)="onSaveButtonClick()"
+
+          >
+            <mat-icon>print</mat-icon>
+            Save
+          </button>
+          <button
+            class="close-btn"
+            mat-raised-button
+            color="primary"
+            [mat-dialog-close]="false"
+            (click)="CancelLeaveRequest()"
+          >
+            <mat-icon>cancel</mat-icon>Close
+          </button>
+        </div>
+        </mat-dialog-content>
+        
+      </div>
+    </div>
+  </form>
+
+

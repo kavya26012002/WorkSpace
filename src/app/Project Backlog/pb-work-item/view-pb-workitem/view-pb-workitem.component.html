@@ -1,0 +1,663 @@
+<div class="display_whole_content">
+  <div class="breadcrums_display">
+    <i class="navic ic18"></i>
+    <div class="breadcrum_content">
+      <span class="WorkSpace_breadcrum">{{ this.projectName }}</span>
+      <span class="breadcrumb-separator">&gt;</span>
+      <a class="link_breadcrum">Product Backlog</a>
+      <span class="breadcrumb-separator">&gt;</span>
+      <a class="link_breadcrum" routerLink="/work-item/view-workItem"
+        >WorkItem</a
+      >
+    </div>
+  </div>
+  <div class="heading_table">
+    <div class="display_header">
+      <div class="heading_top">
+        {{ selectedItemName ? selectedItemName : "Work Items" }}
+        <div class="add_btn">
+          <button
+            class="btn-color search-btn"
+            mat-fab
+            extended
+            color="primary"
+            (click)="OnBackClicked()"
+          >
+            <mat-icon>keyboard_arrow_left</mat-icon>
+            Back
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Successs-message div  -->
+    <div *ngIf="showWorkItemRequestSuccess" class="success-message" style="margin-top:5px;">
+      <app-error-message
+        [showSuccess]="showWorkItemRequestSuccess"
+        [successMessage]="WorkItemSuccessMessage"
+      ></app-error-message>
+    </div>
+  <!-- buttons  -->
+    <div class="workOptions">
+      <div class="buttons">
+        <button class="workoption-btn" mat-fab extended (click)="ManageWorkItem(this.ProjectWorkId)"> 
+            <i class="fa fa-edit"></i>
+            Edit 
+        </button>
+        <button class="workoption-btn" mat-fab extended (click)="AddWorkLog(this.ProjectWorkId)">Add Work Log</button>
+        <button class="workoption-btn" mat-fab extended (click)="ToggleComment()">Comments</button>
+        <button class="workoption-btn" mat-fab extended (click)="openAttachmentmodal(this.ProjectWorkId)">Attachment</button>
+        <button class="workoption-btn" mat-fab extended>Check Point</button>
+      </div>
+    </div>
+      <div class="MainprojectTitle">
+        <div class="projecttitle">
+            <img class="project_title_img" src="\assets\task.png">
+            {{this.ProjectTitle}}
+        </div>
+        <div class="projecttitle_button">
+            <button class="projecttitle-btn"  mat-fab extended>Recurrence</button>
+            <button class="projecttitle-btn" mat-fab extended>Add To Watch List</button>
+        </div>
+      </div>
+<div class="AllCollapseDiv">
+    <!-- Comments -->
+    <div class="comment-box" *ngIf="isCommentVisible">
+        <h3 class="comment_title">
+           
+            <span> <i class="fa fa-comment comment-icon" ></i>Add Comment</span>
+        </h3>
+        <div class="comment-box-content">
+            <form [formGroup]="addCommentsForm">
+                <div *ngIf="showWorkItemRequestError" class="success-message" style="margin-top:5px;">
+                    <app-error-message
+                      [showError]="showWorkItemRequestError"
+                      [errorMessage]="WorkItemErrorMessage"
+                    ></app-error-message>
+                  </div>
+                <mat-form-field appearance="outline" class="full-width">
+                   
+                    <textarea matInput  [formControlName]="'Comments'"></textarea>
+                  </mat-form-field>
+
+               
+            </form>
+
+        </div>
+        <div class="footer">
+            <button
+            class="save-btn"
+            type="submit"
+            mat-raised-button
+            color="primary"
+           
+           (click)="SaveComment(this.ProjectWorkId)"
+           
+
+          >
+            <mat-icon>print</mat-icon>
+            Save
+          </button>
+          <button
+            class="close-btn"
+            mat-raised-button
+            color="primary"
+            [mat-dialog-close]="false"
+            (click)="ToggleComment()"
+           
+           
+          >
+            <mat-icon>cancel</mat-icon>Close
+          </button>
+        </div>
+
+    </div>
+      <!-- Details -->
+      <div class="Collapsedetailsdiv">
+        <div class="subCollapse">
+            <div class="leftSubCollapse">
+            <i class="fa fa-align-justify" ></i>
+            <span class="Details">Details</span>
+        </div>
+        <div class="rightSubCollapse">
+            <i class="fa fa-chevron-down" [ngClass]="{'fa-chevron-up': !isDetailsVisible, 'fa-chevron-down': isDetailsVisible}" (click)="toggleDetails()"></i>
+
+        </div>
+
+        </div>
+    <div class="fillWorkItemDetail" [ngClass]="{'slide': !isDetailsVisible}">
+        <div class="workItemDetail1">
+            <div class="workitemleft">
+                <div class="workitemleftdiv">
+                <div class="workitemleft_left">
+                    <strong>Work Flow Type :</strong>
+                </div>
+                <div class="workitemleft_right">
+                    <img class="project1_title_img" src="\assets\task.png">
+
+                    {{getEnumvalue(this.workFlow)}}
+                </div>
+            </div>
+            </div>
+            <div class="workitemright">
+                <div class="workitemrightdiv">
+                <div class="workitemright_left">
+                    <strong >Created Date :</strong>
+                </div>
+                <div class="workitemright_right">
+                    {{ this.createdDate}}
+                </div>
+            </div>
+        </div>
+         </div>
+
+         <div class="workItemDetail1">
+            <div class="workitemleft">
+                <div class="workitemleftdiv">
+                <div class="workitemleft_left">
+                    <strong>Work Group :</strong>
+                </div>
+                <div class="workitemleft_right">
+                    {{this.workGroup}}
+                </div>
+            </div>
+            </div>
+            <div class="workitemright">
+                <div class="workitemrightdiv">
+                <div class="workitemright_left">
+                    <strong >Last Modified Date :</strong>
+                </div>
+                <div class="workitemright_right">
+                   {{ this.lastModeifiedDtae}}
+                </div>
+            </div>
+
+            </div>
+
+        </div>
+
+        <div class="workItemDetail1">
+            <div class="workitemleft">
+                <div class="workitemleftdiv">
+                <div class="workitemleft_left">
+                    <strong>Priority :</strong>
+                </div>
+                <div class="workitemleft_right">
+                    {{this.priority}}
+                </div>
+            </div>
+            </div>
+            <div class="workitemright">
+                <div class="workitemrightdiv">
+                <div class="workitemright_left">
+                    <strong > Start Date :</strong>
+                </div>
+                <div class="workitemright_right">
+                   {{ this.startDate}}
+                </div>
+            </div>
+
+            </div>
+
+        </div>
+
+        <div class="workItemDetail1">
+            <div class="workitemleft">
+                <div class="workitemleftdiv">
+                <div class="workitemleft_left">
+                    <strong>Status :</strong>
+                </div>
+                <div class="workitemleft_right">
+                    {{getEnumStatus(this.status)}}
+                </div>
+            </div>
+            </div>
+            <div class="workitemright">
+                <div class="workitemrightdiv">
+                <div class="workitemright_left">
+                    <strong > End Date :</strong>
+                </div>
+                <div class="workitemright_right">
+                   {{ this.endDate}}
+                </div>
+            </div>
+
+            </div>
+
+        </div>
+
+        <div class="workItemDetail1">
+            <div class="workitemleft">
+                <div class="workitemleftdiv">
+                <div class="workitemleft_left">
+                    <strong>Assign To :</strong>
+                </div>
+                <div class="workitemleft_right">
+                    {{this.assignTo}}
+                </div>
+            </div>
+            </div>
+            <div class="workitemright">
+                <div class="workitemrightdiv">
+                <div class="workitemright_left">
+                    <strong > Original Est :</strong>
+                </div>
+                <div class="workitemright_right">
+                   {{ this.originalEst}}
+                   <i class="fa fa-question-circle"></i>
+
+
+                </div>
+            </div>
+
+            </div>
+
+        </div>
+  
+        <div class="workItemDetail1">
+            <div class="workitemleft">
+                <div class="workitemleftdiv">
+                <div class="workitemleft_left">
+                    <strong>Reported By :</strong>
+                </div>
+                <div class="workitemleft_right">
+                    {{this.reportTo}}
+                </div>
+            </div>
+            </div>
+            <div class="workitemright">
+                <div class="workitemrightdiv">
+                <div class="workitemright_left">
+                    <strong > Reamining Est :</strong>
+                </div>
+                <div class="workitemright_right">
+                   {{ this.remainingEst}}
+                   <i class="fa fa-question-circle"></i>
+
+
+                </div>
+            </div>
+
+            </div>
+
+        </div>
+
+        <div class="workItemDetail1">
+            <div class="workitemleft">
+                <div class="workitemleftdiv">
+                <div class="workitemleft_left">
+                    <strong>RSI :</strong>
+                </div>
+                <div class="workitemleft_right">
+                    {{this.rsi}}
+                </div>
+            </div>
+            </div>
+            <div class="workitemright">
+                <div class="workitemrightdiv">
+                <div class="workitemright_left">
+                    <strong > Work Logged :</strong>
+                </div>
+                <div class="workitemright_right">
+                   {{ this.workLogged}}
+
+
+                </div>
+            </div>
+
+            </div>
+
+        </div>
+    </div>
+      </div>
+<!-- Description -->
+
+      <div class="Collapsedetailsdiv2">
+        <div class="subCollapse">
+            <div class="leftSubCollapse">
+            <i class="fa fa-list" ></i>
+            <span class="Details">Description</span>
+        </div>
+        <div class="rightSubCollapse">
+            <i class="fa fa-chevron-down" (click)="toggleDescription()" [ngClass]="{'fa-chevron-down': isDescriptionVisible, 'fa-chevron-up': !isDescriptionVisible}"></i>
+
+        </div>
+
+        </div>
+   
+        <div class="fillWorkItemDescription" *ngIf="isDescriptionVisible">
+            <div [innerHTML]="description"></div>
+          </div>
+          
+  
+     
+    
+  </div>
+
+
+<!-- Attachments -->
+  
+  <div class="Collapsedetailsdiv3">
+    <div class="subCollapse">
+        <div class="subAttachmentdivcontent">
+        <i class="fa fa-paperclip firsticon" ></i>
+        <span class="Details firsticon">Attachments</span>
+        <i class="fa fa-plus firsticon" (click)="openAttachmentmodal(this.ProjectWorkId)"></i>
+
+    </div>
+    <div class="rightSubCollapse">
+        <i class="fa fa-chevron-down" (click)="toggleAttachment()" [ngClass]="{'fa-chevron-down': isAttachmentVisible, 'fa-chevron-up': !isAttachmentVisible}"></i>
+    </div>
+</div>
+   
+<div class="fillWorkItemAttachment"  *ngIf="isAttachmentVisible">
+    <div class="AttachmentDiv" *ngIf="isAttachmentDivVisible">
+        <table class="kendo-table">
+            <thead>
+              <tr>
+                <th
+                  *ngFor="let column of columns"
+                  [style.width.px]="column.width"
+                  [style.backgroundColor]="'whitesmoke'"
+                >
+                  {{ column.title }}
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let row of gridData">
+             <td *ngFor="let column of columns">
+                 <div *ngIf="column.field === 'action'">
+                    <i class="fa fa-times" (click)="deleteAttachment(row.attachmentId)"></i>
+
+                 </div>
+                 <div *ngIf="column.field === 'attachment'">
+                    <a href="{{row.attachmentPath}}" target="_blank">{{ row[column.field] }}
+                    </a>
+                  </div>
+   
+                 <div *ngIf="column.field === 'uploadedOn'">
+                       {{row[column.field]}}
+                 </div>
+                 <div *ngIf="column.field !== 'attachment' && column.field !== 'uploadedOn'">
+                    {{ row[column.field] }}
+                  </div>
+
+             </td>
+            </tr>
+
+            </tbody>
+          </table>
+    </div>
+ 
+  </div>
+
+ 
+  
+
+
+</div>
+
+<!-- StateGraph -->
+<div class="Collapsedetailsdiv4">
+    <div class="subCollapse">
+        <div class="leftSubCollapse">
+        <i class="fa-sharp fa-solid fa-signal-bars"></i>
+        <span class="Details">State Graph</span>
+    </div>
+    <div class="rightSubCollapse">
+        <i class="fa fa-chevron-down" (click)="toggleStateGraph()" [ngClass]="{'fa-chevron-down': isStateGraphVisible, 'fa-chevron-up': !isStateGraphVisible}"></i>
+
+    </div>
+
+    </div>
+<div class="fillWorkItemStateGraph"  *ngIf="isStateGraphVisible">
+    <div class="progress_list" style="padding: 15px 0;">
+        <ul>
+            <li *ngFor="let item of ProjectStatusState">
+                <div class="pgl_ar">{{item.employee}}<span>{{item.createdAt | date: 'dd-MMM-yyyy hh:mm a'}}</span>
+                    </div>
+                    <div *ngIf="item.projectStatusId == 1" class="pgl_status" style="background-color: #64a3e4    ">
+                        {{projectStatus[item.projectStatusId]}}</div>
+                        <div *ngIf="item.projectStatusId == 2" class="pgl_status" style="background-color: #f4b24c    ">
+                            {{projectStatus[item.projectStatusId]}}</div>
+                            <div *ngIf="item.projectStatusId == 3" class="pgl_status" style="background-color: #54bed9    ">
+                                {{projectStatus[item.projectStatusId]}}</div>
+                                <div *ngIf="item.projectStatusId == 4" class="pgl_status" style="background-color: #9cc847    ">
+                                    {{projectStatus[item.projectStatusId]}}</div>
+                                <div *ngIf="item.projectStatusId == 5" class="pgl_status" style="background-color: #ababab    ">
+                                    {{projectStatus[item.projectStatusId]}}</div>
+                                    </li>
+                                    </ul>
+        </div>
+ 
+
+  </div>
+
+</div>
+<!-- LastTable -->
+
+<div class="Collapsedetails6">
+    <div class="fillWorkItemTabs">
+        <div class="Tabs">
+        <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="start" style="margin-left: 5px;">
+            <!-- Comments  -->
+            <mat-tab>
+              <ng-template mat-tab-label>
+                <i class="fa fa-comment comment-icon" ></i>
+                Comments
+              </ng-template>
+              <div class="content_tabs" *ngFor="let comment of commentsResponse">
+                <mat-form-field class="example-form-field" class="full-width">
+                  <div class="content_comment">
+                    <div class="left_comment">
+                      <input matInput type="text" [value]="comment.comment">
+                    </div>
+                    <div class="right_comment">
+                      <span class="comment_name">{{ comment.name }} <span class="comment_name">{{ comment.createdDate | date: 'dd-MMM-yyyy hh:mm a' }}</span></span>
+                    </div>
+                  </div>
+                  <button matSuffix mat-icon-button aria-label="Clear" (click)="DeleteComment(comment.commentId)">
+                    <i class="fa fa-times delete_comment"></i>
+                  </button>
+                </mat-form-field>
+              </div>
+              
+          
+            </mat-tab>
+          <!-- History  -->
+            <mat-tab>
+              <ng-template mat-tab-label>
+                <i class="fa fa-indent comment-icon"></i>
+                History
+              </ng-template>
+              <div class="content_tabs">
+                <div class="content_tabs">
+                  <div class="content_WorkLog">
+                      <div class="WorkLogDiv" *ngIf="isHistoryVisible">
+                          <table class="kendo-table">
+                              <thead>
+                                <tr>
+                                  <th
+                                    *ngFor="let column of workHistoryColumns"
+                                    [style.width.px]="column.width"
+                                    [style.backgroundColor]="'whitesmoke'"
+                                    (click)="sortTable(column.sortable ? column : null)"
+                                    [class.sortable-header]="column.sortable"
+                                  >
+                                    {{ column.title }}
+                                    <mat-icon *ngIf="sortColumn === column.sortColumn" class="sort-icon">
+                                      {{ sortOrder ? 'arrow_drop_up' : 'arrow_drop_down' }}
+                                    </mat-icon>
+                                  </th>
+                                </tr>
+                              </thead>
+                              <tbody *ngIf="totalRecords > 0; else noRecords">
+                              <tr *ngFor="let row of gridWorkLogHistroyData">
+                               <td *ngFor="let column of workHistoryColumns">
+                     
+                                   <div *ngIf="column.field === 'field'">
+                                      {{ row[column.field] }}
+                                  </div>
+                                  <div *ngIf="column.field === 'employeeName'">
+                                      {{ row[column.field]  }}
+                                  </div>
+                                  <div *ngIf="column.field === 'createdAt'">
+                                    {{ row[column.field] | date:'dd-MMM-yyyy' }}
+                                </div>
+                                  <div *ngIf="column.field === 'oldValue' && row['field'] === 'Work Flow Step'">
+                                      {{projectStatus[(+(row['oldValue'] ?? 0))]}}
+                                  </div>
+                                  <div *ngIf="column.field === 'newValue' && row['field'] === 'Work Flow Step'">
+                                    {{projectStatus[(+(row['newValue'] ?? 0))]}}
+                                  </div>
+                                <div *ngIf="column.field === 'newValue' && row['field'] !== 'Work Flow Step'">
+                               
+                                  {{formatTime(+(row['newValue'] ?? 0))}} Hrs
+                              </div>
+                              <div *ngIf="column.field === 'oldValue' && row['field'] !== 'Work Flow Step'">
+                                {{formatTime(+(row['oldValue'] ?? 0))}} Hrs
+                            </div>
+                                 
+                                   <div *ngIf="column.field !== 'field' && column.field !== 'employeeName' && column.field !== 'createdAt' && column.field === 'oldValue' && column.field === 'newValue'">
+                                      {{ row[column.field] }}
+                                    </div>
+                  
+                               </td>
+                              </tr>
+                  
+                              </tbody>
+                              <ng-template #noRecords>
+                                <tbody>
+                                  <tr>
+                                    <td [attr.colspan]="workHistoryColumns.length">
+                                      No Records Found
+                                    </td>
+                                  </tr>
+                                </tbody>
+                              </ng-template>
+                            </table>
+                            <mat-paginator #paginator
+                            [length]="totalRecords"
+                            [pageSizeOptions]="pageSizeOptions"
+                            (page)="onPageChange($event)"
+                            arial-label="select page"
+                            *ngIf="totalRecords > 0">
+                          
+                            
+                            <ng-template matPaginatorIntl let-paginator>
+                              <div class="paginator">
+                                <div class="total-records">{{ paginator.length }} Total Records</div>
+                                <div class="paginator-controls">
+                                  <button (click)="paginator.previousPage()" mat-icon-button>
+                                    <mat-icon>keyboard_arrow_left</mat-icon> Previous
+                                  </button>
+                                  <div class="page-size">
+                                    <mat-select [(value)]="pageSize" (selectionChange)="onPageSizeChange($event)">
+                                      <mat-option *ngFor="let option of pageSizeOptions" [value]="option">{{ option }}</mat-option>
+                                    </mat-select>
+                                  </div>
+                                  <button (click)="paginator.nextPage()" mat-icon-button>
+                                     <mat-icon>keyboard_arrow_right</mat-icon>
+                                    
+                                  </button>
+                                </div>
+                              </div>
+                            </ng-template>
+                          
+                          </mat-paginator>
+                      </div>
+                   
+                  </div>
+              </div>
+            </div>
+            </mat-tab>
+          <!-- WorkLink  -->
+            <mat-tab>
+              <ng-template mat-tab-label>
+                <i class="fa fa-link comment-icon"></i>
+                WorkLink
+              </ng-template>
+          
+              <div class="content_tabs">
+                Content3
+            </div>
+            </mat-tab>
+
+            <!-- WorkLog  -->
+            <mat-tab>
+                <ng-template mat-tab-label>
+                  <i class="fa fa-clock-o comment-icon"></i>
+                  WorkLog
+                </ng-template>
+            
+                <div class="content_tabs">
+                    <div class="content_WorkLog">
+                        <div class="WorkLogDiv" *ngIf="isWorkLogHistoryVisible">
+                            <table class="kendo-table">
+                                <thead>
+                                  <tr>
+                                    <th
+                                      *ngFor="let column of workLogColumns"
+                                      [style.width.px]="column.width"
+                                      [style.backgroundColor]="'whitesmoke'"
+                                    >
+                                      {{ column.title }}
+                                    </th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                <tr *ngFor="let row of gridWorkLogData">
+                                 <td *ngFor="let column of workLogColumns">
+                                     <div *ngIf="column.field === 'actions'">
+                                      
+                                        <div class="editanddelete">
+                                            <mat-icon (click)="AddWorkLogHistory(this.ProjectWorkId,row['workLogHistoryId'],row['description'])">schedule</mat-icon>
+                                            <mat-icon class="icon red-icon" (click)="DeleteWorkLogHistory(this.ProjectWorkId,row['workLogHistoryId'])">block</mat-icon>
+                                          </div>
+                                          </div>
+                       
+                                     <div *ngIf="column.field === 'workDate'">
+                                        {{ row[column.field] | date:'dd-MMM-yyyy' }}
+                                    </div>
+                                    <div *ngIf="column.field === 'workedHours'">
+                                        {{ row[column.field]  }}
+                                    </div>
+                                    <div *ngIf="column.field === 'employee'">
+                                        {{ row[column.field]  }}
+                                    </div>
+                                    <div *ngIf="column.field === 'description'">
+                                        {{ row[column.field]  }}
+                                    </div>
+                                     <div *ngIf="column.field !== 'workDate' && column.field !== 'workedHours' && column.field !== 'employee' && column.field !== 'description' && column.field !== 'workLogHistoryId'">
+                                        {{ row[column.field] }}
+                                      </div>
+                    
+                                 </td>
+                                </tr>
+                    
+                                </tbody>
+                              </table>
+                        </div>
+                     
+                    </div>
+                </div>
+              </mat-tab>
+              <!-- Review  -->
+              <mat-tab>
+                <ng-template mat-tab-label>
+                  Review
+                </ng-template>
+            
+                <div class="content_tabs">
+                    Content4
+                </div>
+              </mat-tab>
+          </mat-tab-group>
+        </div>
+          
+
+</div>
+</div>
+</div>
+</div>

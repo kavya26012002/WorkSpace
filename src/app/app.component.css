@@ -1,0 +1,95 @@
+.content{
+    /* height:calc(90vh - 40px) ; */
+   
+    display: flex;
+    justify-content: center;
+   
+    font-size: 1.5rem;
+    color: lightgray;
+    overflow-y: hidden;
+
+}
+
+.logincontent
+{
+   
+        height:calc(100vh - 40px) ;
+        align-items: center;
+        display: flex;
+        justify-content: center;
+      
+        font-size: 1.5rem;
+        color: lightgray;
+        overflow-y: hidden;
+        
+  
+}
+.cdk-overlay-connected-position-bounding-box {
+    top: 270.338px;
+    left: 534.438px;
+    align-items: flex-start;
+    justify-content: flex-start;
+    height: 98px !important;
+    
+}
+.mat-mdc-menu-content.mdc-list.ng-tns-c23-5 {
+    height: 93px !important ;
+}
+@media (max-width: 1257px) {
+    .content{
+        /* height: calc(90vh - 40px); */
+        margin: 16px;
+        margin-left: 10px;
+        display: flex;
+       
+        font-size: 1.5rem;
+        color: lightgray;
+        padding-top: 10px;
+        padding-left: 0px !important;
+        overflow-y: auto;
+        
+    }
+    .main-content {
+        flex: 1; 
+        /* overflow-y: auto; 
+        height: 100vh; */
+      }
+}
+@media (max-width: 764px) {
+    .content{
+        height: 100%;
+        margin: 16px;
+        margin-left: 10px;
+        display: flex;
+        margin-bottom: 80px;
+        font-size: 1.5rem;
+        color: lightgray;
+        padding-top: 10px;
+        padding-left: 0px !important;
+        overflow-y: scroll;
+        
+    }
+    .main-content {
+        flex: 1; 
+        overflow-y: scroll; 
+      
+      }
+}
+  
+  /* Define styles for the sidebar */
+.sidebar {
+    flex: 0 0 250px; /* Set the initial sidebar width to 250px */
+  }
+  
+ 
+  .main-content {
+    flex: 1; 
+    /* overflow-y: auto; 
+    height: 100vh; */
+  }
+
+  
+  /* Apply full width to the sidebar when sideBarOpen is true */
+  .sidebar-open {
+  }
+  

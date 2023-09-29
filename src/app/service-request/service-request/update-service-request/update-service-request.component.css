@@ -1,0 +1,234 @@
+.update_service_request {
+    height: 73vh;
+}
+  
+  .flex-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    height: 100%;
+    overflow-y: auto;
+  }
+  .flex-container-content
+  {
+    display: flex;
+   justify-content: space-between;
+    flex-wrap: wrap;
+    overflow-y: auto;
+    height: 100%;
+  }
+  .left-column,
+  .right-column {
+    width: 48%; 
+    padding: 3px;
+   
+    margin-bottom: 11px;
+    box-sizing: border-box;
+    margin-top: 20px;
+    height: 96%;
+    
+  }
+  
+  .column-header {
+    padding: 8px 10px;
+    background: #f4f4f4;
+    position: relative;
+    color: #333;
+    margin-bottom: 20px;
+    font-size: 13px;
+    font-weight: 400;
+    font-family: "Segoe UI", arial, tahoma;
+    box-sizing: border-box;
+  }
+  .content_title
+  {
+    color: #333;
+    font-size: 13px;
+    font-weight: 400;
+    font-family: "Segoe UI", arial, tahoma;
+  }
+
+  .full-width {
+    width: 100%;
+  }
+  .content {
+  flex: 0 0 80%; 
+}
+.label-container {
+    flex: 0 0 20%; 
+    display: flex;
+    align-items: center;
+  }
+  .left_column_2
+  {
+    margin-top: 20px;
+  }
+  .footer
+{
+    padding: 15px;
+    text-align: right;
+    border-top: 1px solid #e5e5e5;
+}
+.save-btn
+{
+    background: #208fc8;
+    border: 1px solid #208fc8;
+    color: rgb(255, 255, 255);
+    cursor: pointer;
+    font-size: 14px;
+    font-family: "Segoe UI", arial, tahoma;
+    font-weight: 400;
+    border-radius: 0%;
+}
+.close-btn
+{
+    background-color: #e1e1e1;
+    border-color: #e1e1e1;
+    color: #494949 !important;
+    border-radius: 0%;
+    cursor: pointer;
+    font-size: 14px;
+    font-family: "Segoe UI", arial, tahoma;
+    font-weight: 400;
+    margin-left: 5px;
+}
+
+  
+  .column-header {
+    padding: 8px 10px;
+    background: #f4f4f4;
+    position: relative;
+    color: #333;
+    margin-bottom: 20px;
+    font-size: 13px;
+    font-weight: 400;
+    font-family: "Segoe UI", arial, tahoma;
+    box-sizing: border-box;
+  }
+  
+  .maintable {
+    font-size: 13px;
+    color: rgb(51, 51, 51);
+    font-family: 'SegoeUISemibold', Arial, sans-serif;
+    font-weight: 400;
+    width: 100%;
+    overflow-x: auto;
+     margin-top: 10px; 
+  }
+
+  
+  .kendo-table {
+    border-collapse: collapse;
+    width: 48%;
+    
+  }
+  
+  .kendo-table th,
+  .kendo-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  .project-cell {
+    cursor: pointer;
+    position: relative;
+  }
+  
+  .project-cell.mat-icon {
+    position: absolute;
+    left: 8px;
+  }
+  
+  .project-cell.expanded::before {
+    content: '|';
+    position: absolute;
+    left: -8px;
+    top: 0;
+    bottom: 0;
+    display: block;
+    border: 1px solid #ddd;
+  }
+ 
+.kendo-table td:first-child {
+    border-top: none;
+  }
+  
+  .kendo-table td:not(:first-child) {
+    border: 1px solid #ddd;
+  }
+  .ic18 {
+    background-position: -18px -144px !important;
+  }
+  
+  .breadcrums_display
+  {
+    font-size: 13px;
+    padding-top: 11px;
+    display: flex;
+  }
+  .WorkSpace_breadcrum
+  {
+   font-size: 13px;
+   color: rgb(51,51,51);
+   font-family: "Segoe UI",arial,tahoma;
+   font-weight: 400; 
+   font-style: normal;
+   white-space: nowrap;
+   text-align: left;
+  }
+  .breadcrum_content {
+    display: flex; 
+    align-items: center; 
+  }
+  
+  .WorkSpace_breadcrum {
+    margin-right: 5px; 
+  }
+  
+  .breadcrumb-separator {
+    padding: 0 5px;
+        font-size: 17px;
+  }
+  .link_breadcrum {
+    color: #999999;
+    text-decoration: none;
+    font-size: 13px;
+    font-family: "Segoe UI",arial,tahoma;
+    font-weight: 400; 
+    font-style: normal;
+    white-space: nowrap;
+    text-align: left;
+    cursor: pointer;
+  
+  
+  }
+  
+  .navic {
+    background: url(src\assets\ic-leftnav.png) 0px 0px no-repeat;
+    width: 18px;
+    height: 18px;
+    display: inline-block;
+    margin-right: 6px;
+    vertical-align: -4px;
+  }
+  
+  @media (max-width: 1257px) {
+  
+    .update_service_request {
+        height: 67vh;
+    }
+  }
+  @media (max-width: 992px) {
+    .flex-container {
+      flex-direction: row;
+    }
+  
+    .left-column,
+    .right-column {
+      width: 100%;
+      height: auto;
+    }
+ 
+  }
+  
